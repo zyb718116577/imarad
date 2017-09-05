@@ -1,0 +1,99 @@
+
+body{
+    width: 100%;
+    position: relative;
+    min-width: 1000px;
+    /*background: url('../../../img/login-register.png');*/
+}
+ul{
+    list-style: none;
+}
+input::-ms-clear{display:none;}
+input::-ms-reveal{display:none;}
+.return-box{
+    position: fixed;
+    z-index: 999;
+    width: 40px;
+    height: 40px;
+    background: #0773b8;
+    text-align: center;
+    right: 50px;
+    bottom: 100px;
+    cursor: pointer;
+}
+.header{
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    border-bottom: 1px solid white;
+    color: white;
+}
+.header-left{
+    font-size: 30px;
+    float: left;
+    padding-left: 65px;
+}
+.header-right{
+    float: right;
+    padding-right: 65px;
+}
+/*内容部分*/
+.contanier{
+    width: 960px;
+    background: white;
+    position: absolute;
+    left: 50%;
+    top: 180px;
+    margin-left: -480px;
+    margin-bottom: 200px;
+}
+.contanier-box{
+    margin: 30px;
+}
+.terms-top{
+    font-size: 24px;
+    color: rgb(77,77,77);
+    border-bottom: 1px solid #b6b6b6;
+    padding-bottom: 15px;
+}
+.ard-agreement{
+    text-align: center;
+}
+.agreement-describe{
+    line-height: 25px;
+    text-indent: 30px;
+    padding-bottom: 5px;
+}
+.agreement-describe-subdivide{
+    text-indent: 30px;
+    line-height: 25px;
+    margin: 0;
+}
+
+
+/*底部*/
+.so-specialist-footer{
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 3800px;
+    z-index: 999;
+}
+.so-specialist-footer1{
+    width: 500px;
+    margin: 0 auto;
+}
+.so-specialist-footer1 li{
+    float: left;
+    margin: 0 5px;
+    font-size: 14px;
+}
+.so-specialist-footer2{
+    width: 650px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 14px;
+    margin-top: 15px;
+    padding-bottom: 50px;
+}
+

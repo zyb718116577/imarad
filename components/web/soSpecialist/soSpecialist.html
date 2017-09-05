@@ -1,0 +1,239 @@
+<!--登录窗口-->
+<!--<div class="account-disgraceful"></div>
+<div class="sign-all-box">
+    <div class="sign-box">
+        <ul class="sign-hidden">
+            <li class="sign3">手机登录</li>
+            <li class="sign1 sign-active">账号登录</li>
+        </ul>
+        <div style="clear: both"></div>
+        <div action="" class="sign-info">
+            <div class="account">
+                <form action="#">
+                    <div class="sign-input">
+                        <input type="text" placeholder="账号" class="input-input" id="accountNumber">
+                        <img src="../../../img/error.png" class="error">
+                    </div>
+                    <div class="sign-input">
+                        <input type="password" placeholder="密码" class="input-input" id="accountPassword">
+                        <img src="../../../img/error.png" class="error">
+                    </div>
+                    <div class="sign-input sign-checkbox">
+                        &lt;!&ndash;<input type="checkbox" id="checkbox">
+                        <label for="checkbox">自动登录</label>&ndash;&gt;
+                        <a href="../forgotPassword/forgotPassword.html" style="text-decoration: none">忘记密码？</a>
+                    </div>
+                    <input type="button" value="登  录" class="submit-submit" style="margin-top: 8px" id="accountSubmit" onclick="return false">
+                    <input type="reset" value="重置" style="display: none" id="resetFirst">
+                </form>
+            </div>
+            <div class="tel">
+                <form action="#">
+                    <div class="sign-input">
+                        <input type="text" placeholder="请输入手机号" class="input-input" id="iphoneNumber">
+                        <img src="../../../img/error.png" class="error">
+                    </div>
+                    <div class="drag">
+                        <div class="disgraceful"></div>
+                        <div class="bg"></div>
+                        <p class="text">拖动滑块验证</p>
+                        <div class="btn"></div>
+                    </div>
+                    <div class="sign-input">
+                        <input type="password" placeholder="动态密码" class="input-input" id="iphonePassword">
+                        <img src="../../../img/error.png" class="error" style="right: 135px">
+                        <button class="img-verification" style="background: #b9d4e6;border: none;" disabled="disabled">获取验证码</button>
+                    </div>
+                    <input type="button" value="登  录" class="submit-submit" style="margin-top: 25px" id="iphoneSubmit" onclick="return false">
+                    <input type="reset" value="重置" style="display: none" id="resetTwo">
+                </form>
+            </div>
+        </div>
+        <div class="sign-hr"></div>
+        <div class="other-sign">
+            <div class="other-sign-left">第三方登录：</div>
+            <ul class="other-sign-center">
+                <li><img src="../../../img/login2.png"></li>
+                <li><img src="../../../img/login3.png"></li>
+                <li><img src="../../../img/login4.png"></li>
+            </ul>
+            <div class="other-sign-right"><a href="./../register/register.html">注册账号</a></div>
+        </div>
+    </div>
+</div>-->
+<!--内容部分-->
+<div class="so-specialist-main">
+    <div class="so-specialist-box">
+        <div class="so-specialist">
+            <div class="so-specialist-top">
+                <span><a href="#home">首页</a></span><span class="arrow">></span><span><a href="#onlineClassroom">在线课堂</a></span><span
+                    class="arrow">></span><span>在线专家</span>
+            </div>
+            <div class="so-specialist-table">
+                <div class="so-specialist-table-left">
+                    <div class="so-specialist-table-left-1" id="name">
+                        <div id="expertInfo1"></div>
+                        <script id="expertInfoTpl1" type="text/html">
+                            <div class="so-specialist-name1">{{ d.imaradUserInfoEntity.userName }}</div>
+                            <div class="so-specialist-hospital">
+                                <div class="so-specialist-hospital-logo" >
+                                    {{# if(d.imaradUserInfoEntity.headPicPath){ }}
+                                        <img src='imarad/image/{{= d.imaradUserInfoEntity.headPicPath}}' style="width: 100%;height: 100%">
+                                    {{# }else{ }}
+                                    <img src='../../../img/ardLive1.png' style="width: 100%;height: 100%">
+                                    {{# } }}
+
+                                </div>
+                                <div class="so-specialist-hospital-name">
+                                    {{# if(d.imaradUserInfoEntity.userPlace){ }}
+                                        <p>{{ (d.imaradUserInfoEntity.userPlace).split('_')[(d.imaradUserInfoEntity.userPlace).split('_').length-1]}}</p>
+                                    {{# }else{ }}
+                                    <p> </p>
+                                    {{# } }}
+                                </div>
+                            </div>
+                        </script>
+                        <div style="clear: both"></div>
+                        <div class="so-specialist-btn">
+                            <button class="so-specialist-btn-active" id="follow"></button>
+                        </div>
+
+                    </div>
+
+                    <div class="so-specialist-table-left-2">
+                        <div class="so-specialist-follow">
+                            <div id="attentionNum"></div>
+                            <script id="attentionNumTpl" type="text/html">
+                                <p class="so-specialist-follow-p1">{{ d.data }}</p>
+                            </script>
+                            <p class="so-specialist-follow-p2">关注</p>
+                        </div>
+                        <div class="total-playback">
+                            <div id="playNum"></div>
+                            <script id="playNumTpl" type="text/html">
+                                <p class="total-playback-p1">{{ d.data }}</p>
+                            </script>
+                            <p class="so-specialist-follow-p2">总播放量</p>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div id="expertInfo2"></div>
+                    <script id="expertInfoTpl2" type="text/html">
+                        {{# if(d.imaradUserInfoEntity.userTitle){ }}
+                            <div class="so-specialist-table-left-3">
+                                <div class="so-specialist-detail1">
+                                    {{# if(d.imaradUserInfoEntity.userTitle == 1 ){  }}
+                                        主治医生
+                                    {{# } }}
+                                    {{# if(d.imaradUserInfoEntity.userTitle == 2 ){  }}
+                                        主任医生
+                                    {{# } }}
+                                    {{# if(d.imaradUserInfoEntity.userTitle == 3 ){  }}
+                                        副主任医生
+                                    {{# } }}
+                                    {{# if(d.imaradUserInfoEntity.userTitle == 4 ){  }}
+                                        住院医师
+                                    {{# } }}
+                                </div>
+                            </div>
+                        {{# } }}
+
+                        <!--<div class="so-specialist-table-left-4">
+                            <img src='img/soSpecialist2.png'
+                                 style="position: absolute;margin-top: 28px;margin-left: 28px">
+                        </div>-->
+                        {{# if(d.imaradUserInfoEntity.userDesc){ }}
+                            <div class="so-specialist-table-left-5">
+                                <div class="so-specialist-detail2">{{ d.imaradUserInfoEntity.userDesc }}</div>
+                            </div>
+                        {{# } }}
+                    </script>
+                </div>
+                <div class="so-specialist-table-right">
+                    <div class="so-specialist-table-right-top">
+                        <span class="so-specialist-all">所有</span>
+                        <!--<span class="so-specialist-dynamic">动态</span>-->
+                    </div>
+                    <div style="width: 100%;text-align: center;display: none" id="nodaImg">
+                        <img src="../../../img/nodata.png">
+                    </div>
+                    <div class="so-specialist-all-view">
+                        <div id="allSpecialistVideo"></div>
+                        <script type="text/html" id="allSpecialistVideoTpl">
+                            {{# layui.each(d,function(index,item){ }}
+                            {{# if(item.liveType === 1){ }}
+                                    <a href="./components/otherWeb/ardLive/ardLive.html?id={{ item.videoInfoEntity.videoId }}">
+                            {{# }else{ }}
+                                    <a href="./components/otherWeb/ardVideo/ardVideo.html?id={{ item.videoInfoEntity.videoId }}">
+                            {{# } }}
+                                <div class="so-specialist-view">
+                                    <div class="so-specialist-view-img">
+                                        <img src='../../../imarad/image/{{= item.videoInfoEntity.picPath}}' style="width: 100%;height: 100%">
+                                    </div>
+                                    <p class="so-specialist-view-p1">{{ item.videoInfoEntity.videoTitle }}</p>
+                                    <p class="so-specialist-view-p2">{{ item.userName }}</p>
+                                    <div class="so-specialist-view-bottom">
+                                        <div class="so-specialist-view-bottom-left">
+                                            <div class="so-specialist-view-see">
+                                                <img src='img/soSpecialist4.png'>
+                                            </div>
+                                            <span class="so-specialist-view-count">{{ item.playNum}}</span>
+                                        </div>
+                                        <div class="so-specialist-view-bottom-right">
+                                            <span class="so-specialist-view-trailer">
+                                                {{# if(item.liveType === 1){ }}
+                                                        直播
+                                                {{# } }}
+                                                {{# if(item.liveType === 2 && item.videoInfoEntity.videoType === 1 ){ }}
+                                                        预告
+                                                {{# } }}
+                                                {{# if(item.liveType === 2 && item.videoInfoEntity.videoType === 2 ){ }}
+                                                        回放
+                                                {{# } }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            {{# }) }}
+                        </script>
+
+                        <!--分页-->
+                        <div style="clear: both"></div>
+                        <div class="page">
+                            <input type="hidden" id="currentPage" value="1">
+                            <button class="pre">
+                                <img src='img/soSpecialist5.png' style="margin-top: -1px">
+                            </button>
+                            <button class="next">
+                                <img src='img/soSpecialist6.png' style="margin-left: 2px;margin-top: -1px">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+
+            <!--底部-->
+            <div class="so-specialist-footer">
+                <ul class="so-specialist-footer1">
+                    <li>关于我们</li>
+                    <li>|</li>
+                    <li>合作伙伴</li>
+                    <li>|</li>
+                    <li>加入安锐达</li>
+                    <li>|</li>
+                    <li>平台介绍</li>
+                    <li>|</li>
+                    <li>服务条款</li>
+                    <li>|</li>
+                    <li>常见问题</li>
+                </ul>
+                <div style="clear: both"></div>
+                <div class="so-specialist-footer2">版权所有©2015<span style="margin: 0 15px">重庆安碧捷科技股份有限公司</span>
+                    渝ICP备12007374号|渝公网备：50010902000052
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

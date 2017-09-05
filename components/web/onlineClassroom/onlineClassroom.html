@@ -1,0 +1,176 @@
+<!--内容部分-->
+<div class="online-main">
+    <!--头部轮播部分-->
+    <div class="online-top-carousel">
+        <div class="swiper-container swiper-container4">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/1120253992_1483626366737_title0h.jpg"></div>
+                <div class="swiper-slide"><img src="img/1120224961_1483143403191_title0h.jpg"></div>
+                <div class="swiper-slide"><img src="img/1120258422_1483681963680_title0h.jpg"></div>
+                <div class="swiper-slide"><img src="img/1120258441_1483680724298_title0h.jpg"></div>
+                <div class="swiper-slide"><img src="img/1120258839_1483684239446_title0h.jpg"></div>
+                <div class="swiper-slide"><img src="img/1120261142_1483693525715_title0h.jpg"></div>
+            </div>
+        </div>
+        <div class="pagination4"></div>
+        <a class="arrow-left arrow-left4" href="#"></a>
+        <a class="arrow-right arrow-right4" href="#"></a>
+    </div>
+
+    <!--直播的分类-->
+    <div class="online-menu-list">
+        <ul>
+            <li class="online-menu-list-active">正在播放</li>
+            <li>历史回放</li>
+            <li>签约专家</li>
+        </ul>
+    </div>
+
+    <!--正在直播-->
+    <div class="case-img-box">
+        <div style="width: 100%;text-align: center;display: none" id="onlineNodata">
+            <img src="../../../img/nodata.png" >
+        </div>
+        <div class="case-img">
+            <div id="liveList"></div>
+            <script id="liveListTpl" type="text/html">
+                {{# layui.each(d,function(index,item){ }}
+                <div style="height: 330px;float: left;margin: 0 10px">
+                    {{# if(item.liveType === 1){ }}
+                        <a href="./components/otherWeb/ardLive/ardLive.html?id={{ item.liveId }}">
+                    {{# }else{ }}
+                        <a href="./components/otherWeb/conferenceLive/conferenceLive.html?id={{ item.liveId }}">
+                    {{# } }}
+                        <div class="specific-case">
+                            <div class="triangle-right-box"></div>
+                            <div class="triangle-right"></div>
+                            <div class="specific-case-img">
+                                {{# if(item.picPath!==''){ }}
+                                    <img src='imarad/image/{{= item.picPath}}' style="width: 100%;height: 100%">
+                                {{# }else{ }}
+                                <img src='../../../img/curstomerCase1.png' style="width: 100%;height: 100%">
+                                {{# } }}
+
+                            </div>
+                            <div class="specific-case-text">
+                                <div class="specific-case-text-left">{{ item.liveTitle }}</div>
+                                <div class="specific-case-text-right">{{ item.gmtCreate.slice(0,10) }}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{# }); }}
+            </script>
+            <div style="clear: both"></div>
+            <div style="height: 30px;width: 100%"></div>
+            <div class="online-page-contanier" id="livePage">
+                <button class="online-one">首页</button>
+                <button class="online-pre">上一页</button>
+                <button class="online-next">下一页</button>
+                <button class="online-end">尾页</button>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+
+    <!--历史回放-->
+    <div class="case-img-box-video">
+        <div style="width: 100%;text-align: center;display: none" id="oldNodata">
+            <img src="../../../img/nodata.png" >
+        </div>
+        <div class="case-img">
+            <div id="videoList"></div>
+            <script id="videoListTpl" type="text/html">
+                {{# layui.each(d,function(index,item){ }}
+                <div style="height: 330px;float: left;margin: 0 10px">
+                    <a href="./components/otherWeb/ardVideo/ardVideo.html?id={{ item.videoId }}">
+                        <div class="specific-case">
+                            <div class="triangle-right-box"></div>
+                            <div class="triangle-right"></div>
+                            <div class="specific-case-img">
+                                <img src='../../../imarad/image/{{ item.picPath }}' style="width: 100%;height: 100%">
+                            </div>
+                            <div class="specific-case-text">
+                                <div class="specific-case-text-left">{{ item.videoTitle }}</div>
+                                <div class="specific-case-text-right">{{ item.gmtCreate.slice(0,10) }}</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{# }); }}
+            </script>
+            <div style="clear: both"></div>
+            <div style="height: 30px;width: 100%"></div>
+            <div class="online-page-contanier" id="videoPage">
+                <button class="video-one">首页</button>
+                <button class="video-pre">上一页</button>
+                <button class="video-next">下一页</button>
+                <button class="video-end">尾页</button>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+
+    <!--签约专家-->
+    <div class="online-expert-box">
+        <div style="width: 100%;text-align: center;display: none" id="expertNodata">
+            <img src="../../../img/nodata.png" >
+        </div>
+        <div id="expertList"></div>
+        <script id="expertListTpl" type="text/html">
+            {{# layui.each(d,function(index,item){ }}
+            <div class="online-expert">
+                <div class="online-expert-list">
+                    <div class="online-expert-list-left">
+                        <div class="online-expert-list-left-logo">
+                            <img src='imarad/image/{{= item.headPicPath }}' style="width: 100%;height: 100%;border-radius: 50%">
+                        </div>
+                        <div class="online-expert-list-left-text">
+                            <p class="online-expert-list-left-p1">{{ item.userName }}</p>
+                            {{# if(item.userPlace){ }}
+                                <p class="online-expert-list-left-p2">{{ (item.userPlace).split('_')[(item.userPlace).split('_').length-1] }}
+                            {{# } }}
+                                <span class="online-expert-list-left-p3">
+                                    {{# if( item.userTitle === '3'){ }}
+                                        住院医师
+                                    {{# } }}
+                                    {{# if( item.userTitle === '2'){ }}
+                                        副主任医师
+                                    {{# } }}
+                                    {{# if( item.userTitle === '1'){ }}
+                                        主任医师
+                                    {{# } }}
+                                    {{# if( item.userTitle === '0'){ }}
+                                        主治医师
+                                    {{# } }}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="online-expert-list-right">
+                        <a href="#soSpecialist?id={{ item.uId }}">了解更多</a>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="online-expert-hr"></div>
+            {{# }); }}
+        </script>
+
+
+        <div style="clear: both"></div>
+        <div style="clear: both"></div>
+        <div style="height: 75px;width: 100%"></div>
+        <div style="width: 1000px;margin: 0 auto" id="expertPage">
+            <div class="expert-page-contanier">
+                <button class="expert-one">首页</button>
+                <button class="expert-pre">上一页</button>
+                <button class="expert-next">下一页</button>
+                <button class="expert-end">尾页</button>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="allPage">

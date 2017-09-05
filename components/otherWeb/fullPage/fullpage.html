@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案列详情</title>
+    <link rel="stylesheet" href="../../../static/css/common.css">
+    <link rel="stylesheet" href="../../../static/css/idangerous.swiper2.7.6.css">
+    <link rel="stylesheet" href="fullPage.css">
+    <!--[if lt IE 9]>
+    <script src="../../../static/plugin/html5.js"></script>
+    <script src="../../../static/plugin/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="header-contanier" style="background: white;position: fixed;z-index: 999;">
+    <div class="header-nav">
+        <div class="nav-list-box">
+            <div style="width: 1000px;margin: 0 auto;position: relative">
+                <div class="nav-title">
+                    <a href="/index.html#home" style="position: absolute;top: -2px;left: 20px"><img src="../../../img/logo.png"></a>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="/index.html#home" class="menu home">首页</a></li>
+                    <li class="re">
+                        <a href="/index.html#liveService" class="menu liveService">产品与服务</a>
+                        <div class="nav-two-menu-box" >
+                            <ul class="nav-two-menu" >
+                                <li><a href="" class="nav-two-menu-first ff" style="border-top-left-radius: 2px; border-right-left-radius:2px" onclick="return false">在线课堂</a></li>
+                                <li>
+                                    <a href="" class="ff" id="toSomeApplicationScenarios" onclick="return false">直播服务<span style="padding-left: 130px;display: none"><div class="nav-two-menu-first-img"></div></span>
+                                    </a>
+                                </li>
+                                <li><a href="" class="ff" style="border-bottom-right-radius: 2px;border-bottom-left-radius: 2px" id="toSomeProductAdvantage" onclick="return false">转播服务</a></li>
+                            </ul>
+                            <div class="triangle-up"></div>
+                        </div>
+                    </li>
+                    <li><a href="/index.html#curstomerCase" class="menu curstomerCase">客户案例</a></li>
+                    <li><a href="/index.html#onlineClassroom" class="menu onlineClassroom" id="online">在线课堂</a></li>
+                    <li><a href="/index.html#aboutUs" class="menu aboutUs">关于我们</a></li>
+                </ul>
+                <div class="login-sign">
+                    <a class="sign" href="../register/register.html">注册</a>
+                    <a class="login" href="../login/login.html">登录</a>
+                </div>
+                <div class="login-sign login-sign-info">
+                    <img src="img/ardLive1.png" class="head-portrait" id="headPortrait">
+                    <span id="userName"></span>
+                    <div class="logout-and-handover-box">
+                        <div class="triangle-up" style="top: 56px;left: -41px"></div>
+                        <div class="logout-and-handover">
+                            <a href="./admin.html" style="border-top-left-radius: 3px;border-top-right-radius: 3px"><i class="icon iconfont icon-shezhi" style="font-size: 16px;padding-right: 10px"></i>个人设置</a>
+                            <a id="logout"><i class="icon iconfont icon-tuichudenglu" style="font-size: 16px;padding-right: 10px"></i>注销</a>
+                            <a href="./components/otherWeb/login/login.html"><i class="icon iconfont icon-qiehuanyonghu" style="font-size: 16px;padding-right: 10px"></i>切换用户</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide slide1">
+            <a href="#" class="logo"></a>
+            <div style="position: absolute;left: 24%;top:28%; z-index:10;">
+                <div style="margin-top: -13px;" class="ani ani1-1"><img src="img/1-title.png"></div>
+                <div class="ani ani1-2">
+                    <p class="fs24 pt5">客服和我说了什么?</p>
+                    <p class="fs24 pt10">每一次的沟通在这里都可以找到</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide slide2">
+            <div style="position: absolute;left: 13.5%;top:26.5%; z-index:10;">
+                <div class="ani ani2-1"><img src="img/2-title.png"></div>
+                <div class="fs16 white mt20 ml10 ani ani2-2">
+                    <p>第一次买保险，特担心被忽悠买错产品，这下可以放心啦！</p>
+                    <p class="mt20 mb20 line"></p>
+                    <p>销售行为可回溯<span class="dividing-line"></span>沟通永久可查</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide slide3">
+            <div style="position: absolute;left: 28%;top:25%;z-index:10;">
+                <div class="ani ani3-1"><img src="img/3-title.png"></div>
+                <div class="fs16 white mt20 ml10 ani ani3-2">
+                    <p>两年前，给老公买了份保险，产品条款当时客服怎么解释来着？</p>
+                    <p class="line mt20 mb20"></p>
+                    <p>电话语音记录<span class="dividing-line"></span>在线交互记录<span class="dividing-line"></span>随时随地查询、导出、转存
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide slide4">
+            <div style="position: absolute;right: 16%;top:22%; z-index:10; text-align:right;">
+                <div class="ani ani4-1"><img width="517" height="112" src="img/4-title.png"></div>
+                <div class="fs16 white mt15 mr35 ani ani4-2" style="margin-right:35px;">
+                    <p>保险是件复杂的事，很多问题都需要耐心解答，有记录，有依据，服务好不好，自己说了算！</p>
+                    <p class="line mt20 mb20" style="display: inline-block;vertical-align: middle;"></p>
+                    <p>服务过程监督<span class="dividing-line"></span>投保体验评价有依据</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide slide5">
+            <div style="position: absolute;left: 13%;top:19%; z-index:10;">
+                <div class="ani ani5-1"><img width="194" height="62" src="img/5-1-title.png"></div>
+                <div class="pt10 ani ani5-1-2"><img width="592" height="70" src="img/5-2-title.png"></div>
+                <div class="fs16 white ml10 ani ani5-2">
+                    <p class="mt20">2007年7月，第一次在互联网上买了份旅游险；</p>
+                    <p class="mt20">2008年1月，反复咨询沟通后给老公买了重疾险；</p>
+                    <p class="mt20">2009年3月，终于把自己的重疾保障也规划好了；</p>
+                    <p class="pt10">......</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide slide6">
+            <div style=" position:absolute; top:50%; width:100%;text-align:center;margin-top: -200px; z-index:10;">
+                <div class="ani ani6-1"><img width="259" height="29" src="img/6-1-title.png" alt="客户服务记录公开"></div>
+                <div class="ani ani6-2 mt40"><img width="552" height="74" src="img/6-2-title.png" alt="把主动权交回我"></div>
+                <div class="mt40 pt15 ani ani6-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pagination"></div>
+<script src="../../../lib/jquery.js"></script>
+<script src="../../../static/plugin/idangerous.swiper2.7.6.min.js"></script>
+<script src="../../../lib/jquery.cookie.js"></script>
+<script src="fullPage.js"></script>
+</body>
+</html>

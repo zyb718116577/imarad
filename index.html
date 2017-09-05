@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>安锐达医学直播</title>
+    <link href="static/css/normalize.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="static/css/common.css"/>
+    <link rel="stylesheet" href="static/css/idangerous.swiper2.7.6.css">
+    <link rel="stylesheet" href="static/css/aos.css">
+    <!--[if lt IE 9]>
+    <script src="static/plugin/html5.js"></script>
+    <script src="static/plugin/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--公共头部-->
+<div class="header-contanier">
+    <div class="header-nav">
+        <div class="nav-list-box">
+            <div style="width: 1000px;margin: 0 auto;position: relative">
+                <div class="nav-title">
+                    <a href="#home" style="position: absolute;top: 0;left: 20px"><img src="img/logo.png"></a>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#home" class="menu home">首页</a></li>
+                    <li class="re">
+                        <a href="#liveService" class="menu liveService">产品与服务</a>
+                        <div class="nav-two-menu-box">
+                            <ul class="nav-two-menu">
+                                <li><a href="" class="nav-two-menu-first ff" style="border-top-left-radius: 2px; border-right-left-radius:2px" onclick="return false">在线课堂</a></li>
+                                <li>
+                                    <a href="" class="ff" id="toSomeApplicationScenarios" onclick="return false">
+                                        直播服务<span style="padding-left: 130px;display: none"><div class="nav-two-menu-first-img"></div></span>
+                                    </a>
+                                </li>
+                                <li><a href="" class="ff" style="border-bottom-right-radius: 2px;border-bottom-left-radius: 2px" id="toSomeProductAdvantage" onclick="return false">转播服务</a></li>
+                            </ul>
+                            <div class="triangle-up"></div>
+                        </div>
+                    </li>
+                    <li><a href="#curstomerCase" class="menu curstomerCase">客户案例</a></li>
+                    <li><a href="#onlineClassroom" class="menu onlineClassroom" id="online">在线课堂</a></li>
+                    <li><a href="#aboutUs" class="menu aboutUs">关于我们</a></li>
+                </ul>
+                <div class="login-sign">
+                    <a class="sign" href="components/otherWeb/register/register.html">注册</a>
+                    <a class="login" href="components/otherWeb/login/login.html">登录</a>
+                </div>
+                <div class="login-sign login-sign-info">
+                    <img src="img/ardLive1.png" class="head-portrait" id="headPortrait">
+                    <span id="userName"></span>
+                    <div class="logout-and-handover-box">
+                        <div class="triangle-up" style="top: 56px;left: -41px"></div>
+                        <div class="logout-and-handover">
+                            <a href="./admin.html" style="border-top-left-radius: 3px;border-top-right-radius: 3px"><i class="icon iconfont icon-shezhi" style="font-size: 16px;padding-right: 10px"></i>个人设置</a>
+                            <a id="logout"><i class="icon iconfont icon-tuichudenglu" style="font-size: 16px;padding-right: 10px"></i>注销</a>
+                            <a href="./components/otherWeb/login/login.html"><i class="icon iconfont icon-qiehuanyonghu" style="font-size: 16px;padding-right: 10px"></i>切换用户</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--公共回到顶部-->
+<div class="return-top">
+    <div class="return-box">
+        <img src="img/home16.png" style="margin-top: 10px">
+    </div>
+    <div class="return-box">
+        <img src="img/home17.png" style="margin-top: 9px">
+    </div>
+    <div class="return-box" id="gotop">
+        <img src="img/home18.png" style="margin-top: 14px">
+    </div>
+</div>
+<!--中间内容部分-->
+<div class='view-window'></div>
+<!--公共底部-->
+<div class="footer-contanier">
+    <div class="footer">
+        <dl class="col-links">
+            <dt>关于我们</dt>
+            <dd><a href="">关于安锐达</a></dd>
+            <dd><a href="http://www.cnambition.com/">关于安碧捷</a></dd>
+            <dd><a href="">活动咨询</a></dd>
+        </dl>
+        <dl class="col-links">
+            <dt>产品服务</dt>
+            <dd><a href="">直播服务</a></dd>
+            <dd><a href="">转播服务</a></dd>
+            <dd><a href="">在线课堂</a></dd>
+        </dl>
+        <dl class="col-links col-links1">
+            <dt>联系方式</dt>
+            <dd>重庆安碧捷高新技术产业集团有限公司</dd>
+            <dd>
+                <div class="tel-img">
+                    <img src="img/home19.png" style="margin-top: 5px">
+                </div>
+                <span class="tel-number">023-6311 0223</span>
+            </dd>
+            <dd>
+                <div class="address-img">
+                    <img src="img/home20.png" style="margin-top: 5px">
+                </div>
+                <div class="address-text">
+                    <p class="address-text-p1">中国重庆市两江新区青枫北路双子座B座24楼 401122</p>
+                </div>
+            </dd>
+        </dl>
+        <div class="footer-code">
+            <div class="footer-code-about">关注我们</div>
+            <div class="code-img">
+                <img src="img/home15.png">
+            </div>
+        </div>
+        <div style="clear: both"></div>
+        <div style="margin-top: -10px">
+            <p style="color: white;margin-bottom: 5px;font-size: 16px">友情链接</p>
+            <a href="http://www.cnambition.com/" style="color: #949494;font-size: 14px" class="address">www.cnambition.com</a>
+        </div>
+    </div>
+</div>
+<div class="footer-footer">版权所有©2015<span style="padding-left: 20px;padding-right: 20px">重庆安碧捷科技股份有限公司</span>
+    渝ICP备12007374号|渝公网备：50010902000052
+</div>
+<!--<script src="./lib/doT.js"></script>-->
+<script src="./lib/require.js" data-main="appIndex.js?v=1.01"></script>
+<script src="static/plugin/aos.js"></script>
+<script>
+    AOS.init({
+        easing: 'ease-out-back',
+        duration: 1000
+    });
+</script>
+</body>
+</html>

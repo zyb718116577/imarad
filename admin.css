@@ -1,0 +1,284 @@
+@import url("./lib/icon/iconfont.css");
+@import url("static/layui/css/layui.css");
+@import url("static/dist/webuploader.css");
+*{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    min-width: 960px;
+    background: #e6eaed;
+}
+.min-width{
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 64px;
+    background: #1e2329;
+    width: 100%;
+    text-align: center;
+    //position: relative;
+    z-index: 1000;
+    box-shadow:0 2px 25px 2px #000;
+    behavior: url("./lib/IEcss3.htc");
+}
+.header-logo{
+    position: absolute;
+    left: 80px;
+    width: 200px;
+    height: 30px;
+    background: url("./img/adminlogo.png") no-repeat center;
+    top: 18px;
+    cursor: pointer;
+}
+.header-handle{
+    float: right;
+    margin-top: 18px;
+}
+.header-handle a{
+    color: #fff;
+    display: inline-block;
+    height: 25px;
+    padding: 0 40px;
+    line-height: 25px;
+}
+.header-handle a:hover{
+    color: #03a0cd;
+}
+.to-guanwang{
+    border-right: 1px solid #fff;
+}
+
+@media only screen and (max-width: 1100px){
+    .user-tool{
+        display: none;
+    }
+    .li-item{
+        display: none;
+    }
+    .left-menu{
+        width: 100px!important;
+    }
+    .user-headimg,.user-headimg-contenner{
+        width: 50px!important;
+        height: 50px!important;
+    }
+    .user-place,.user-title-hide{
+        display: none;
+    }
+    .left-menu .menu ul li .icon{
+        margin-right: 0!important;
+    }
+    .menu ul li:hover>.shadow-menu-title{
+        display: inline-block!important;
+    }
+    .jiangeDiv{
+        margin-top: 20px!important;
+    }
+}
+
+/*
+*左侧栏菜单
+*/
+.left-menu{
+    background: #1e2329;
+    padding-top: 64px;
+    color: #fff;
+    box-shadow: 0 0 60px rgba(0,0,0,1);
+}
+.user-headimg-contenner{
+    width: 120px;
+    height: 120px;
+    margin: 50px auto;
+    white-space: nowrap;
+}
+.user-headimg{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    background: #e4e9ef;
+    behavior: url("./lib/IEcss3.htc");
+}
+.user-name{
+    text-align: center;
+    font-size: 20px;
+}
+.user-tool{
+    text-align: center;
+    margin: 25px auto 0;
+    font-size: 20px;
+    width: 90%;
+    padding-bottom: 20px;
+}
+.user-tool span{
+    display: inline-block;
+    padding: 0 10px;
+}
+.user-tool .icon{
+    font-size: 25px;
+    color: #4d4d4d;
+    cursor: pointer;
+}
+.user-tool .icon:hover{
+    color: #fff;
+}
+.left-menu .menu{
+    border-top: 2px solid #14181b;
+    width: 90%;
+    margin: 0 auto;
+}
+.left-menu .menu ul{
+    list-style: none;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.left-menu .menu ul li{
+    width: 100%;
+    padding: 25px 0;
+    text-align: center;
+    border-bottom: 1px solid #4c5157;
+    border-top: 2px solid #0c1117 ;
+    border-image: linear-gradient( to right,#1f1f1f, #4c5157, #1f1f1f) 1 0.5;
+    position: relative;
+}
+.shadow-menu-title{
+    font-size: 15px;
+    color: #03a0cd;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    display: none;
+}
+.left-menu .menu ul .no-border-top{
+    border-top: none;
+}
+.left-menu .menu ul .no-border-bottom{
+    border-bottom: none;
+}
+.left-menu .menu ul li a{
+    color: #fff;
+}
+.left-menu .menu ul li:hover a{
+    color: #03a0cd;
+}
+.menulit-active{
+    color: #03a0cd!important;
+}
+.left-menu .menu ul li .icon{
+    margin-right: 10px;
+    font-size: 25px;
+}
+.left-menu .menu ul li .layui-icon{
+    margin-left: 25px;
+    vertical-align: middle;
+}
+
+/*
+ *主视图
+*/
+.view-window{
+    //position: absolute;
+    //height: 100%;
+    //height: calc(100% - 84px);
+    width: 78%;
+    //background: #fff;
+    box-sizing: border-box;
+    margin-left: 295px;
+    margin-top: 84px;
+    min-width: 750px;
+
+}
+@media only screen and (max-width: 1100px){
+    .view-window{
+        margin-left: 145px;
+        width: 80% !important;
+    }
+}
+@media only screen and (max-width: 1350px){
+    .view-window{
+        width: 74%;
+    }
+}
+@media only screen and (max-width: 1200px){
+    .view-window{
+        width: 72%;
+    }
+}
+
+/*主视图左滑动画*/
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    z-index: 100;
+}
+
+.animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(20px);
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(40px);
+        -ms-transform: translateX(40px);
+        transform: translateX(40px);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+    box-shadow: 0 0 30px rgba(0,0,0,.5);
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+a:focus{
+    outline:none;
+}
+.layui-layer-loading{
+    text-align: center;
+}
+.layui-layer-content{
+    display: inline-block;
+}
+.no-data{
+    padding: 120px 0;
+    text-align: center;
+}

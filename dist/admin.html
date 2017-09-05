@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>安锐达直播平台后台管理</title>
+    <link rel="shortcut icon" href="./bitbug_favicon.ico"/>
+    <!--<link rel="stylesheet" href="./layui/css/layui.css">-->
+    <link rel="stylesheet" href="./index.css">
+    <!--[if IE]>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div>
+    <!--head start-->
+    <div class="header">
+        <div class="header-inner min-width">
+            <div class="header-logo"></div>
+            <div class="header-handle">
+                <a class="to-guanwang" href="javascript:void(0)">
+                    <i class="icon iconfont icon-guanwang" style="font-size: 15px"></i>
+                    返回官网
+                </a>
+                <a href="javascript:void(0)">
+                    <i class="icon iconfont icon-tuichudenglu"></i>
+                    退出登录
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--head end-->
+    <!--左侧菜单 start-->
+    <div class="layui-side layui-bg-black left-menu" id="admin-side" style="width: 250px;position: fixed">
+        <div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side" style="width: 100%">
+            <div class="user-headimg"></div>
+            <p class="user-name">观众一</p>
+            <p class="user-name">重庆西南医院</p>
+            <div class="user-tool">
+                <span><i class="icon iconfont icon-weixin"></i></span>
+                <span><i class="icon iconfont icon-iconfontweibowukuang"></i></span>
+                <span><i class="icon iconfont icon-qq"></i> </span>
+            </div>
+            <div class="menu">
+                <ul>
+                    <!--观众入口菜单-->
+                    <li class="no-border-top">
+                        <a href="#likeProfessor" id="likeProfessor">
+                        <i class="icon iconfont icon-iconyonghu"></i>
+                        <span class="li-item">关注专家
+                        <i class="layui-icon">&#xe602;</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#likeMeeting" id="likeMeeting">
+                        <i class="icon iconfont icon-xiaoxixuanzhong01"></i>
+                        <span class="li-item">关注会议
+                        <i class="layui-icon">&#xe602;</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#safety" id="safety">
+                        <i class="icon iconfont icon-zhanghuanquan"></i>
+                        <span class="li-item">账户安全
+                        <i class="layui-icon">&#xe602;</i></span>
+                        </a>
+                    </li>
+                    <li class="no-border-bottom">
+                        <a href="#info" id="info">
+                        <i class="icon iconfont icon-gerenxinxi"></i>
+                        <span class="li-item">个人信息
+                        <i class="layui-icon">&#xe602;</i></span>
+                        </a>
+                    </li>
+                    <!--专家会议入口-->
+                    <li class="no-border-top">
+                        <a href="#createMeeting" id="createMeeting">
+                            <i class="icon iconfont icon-xiaoxixuanzhong01"></i>
+                            <span class="li-item">创建会议
+                            <i class="layui-icon">&#xe602;</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="##">
+                            <i class="layui-icon icon" style="margin-left: 0">&#xe614;</i>
+                            <span class="li-item">会议管理
+                            <i class="layui-icon">&#xe602;</i></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="##">
+                            <i class="icon iconfont icon-zhanghuanquan"></i>
+                            <span class="li-item">账户安全
+                            <i class="layui-icon">&#xe602;</i></span>
+                        </a>
+                    </li>
+                    <li class="no-border-bottom">
+                        <a href="##">
+                            <i class="icon iconfont icon-gerenxinxi"></i>
+                            <span class="li-item">个人信息
+                            <i class="layui-icon">&#xe602;</i></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--左侧菜单 end-->
+</div>
+<!--主视图 start-->
+<div class='view-window'>
+    <!--各个模块加载的地方-->
+</div>
+<!--主视图 end-->
+
+
+<script src="./lib/require.js" data-main="app.js?v=1.0"></script>
+<script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<div class="likeMeeting-box animated fadeInRight">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <!--头部tab菜单-->
+        <ul class="layui-tab-title tab" style="padding-bottom: 0">
+            <li class="layui-this">关注推送(<span>4</span>)</li>
+            <li>系统推送(<span>4</span>)</li>
+            <li>浏览痕迹</li>
+        </ul>
+        <div style="background: #e6eaed;width: 100%;height: 25px"></div>
+        <!--tab子菜单-->
+        <div class="layui-tab-content tab-containner">
+            <!--搜索-->
+            <div class="content-top">
+                <span class="layui-form">
+                    <div class="form-item" style="width: 15%">
+                        <select name="interest" lay-filter="aihao">
+                            <option value="0">类型</option>
+                            <option value="1">阅读</option>
+                        </select>
+                    </div>
+
+                    <div class="form-item" style="width: 12%">
+                        <label class="layui-form-label" style="float: right;">开播时间 :</label>
+                    </div>
+                    <div class="form-item" style="width: 15%">
+                        <input class="layui-input" placeholder="点击选择" onclick="layui.laydate({elem: this, festival: true})">
+                    </div>
+                    <div class="form-item" style="width: 20px;text-align: center;line-height: 38px">
+                        —
+                    </div>
+                    <div class="form-item" style="width: 15%">
+                        <input class="layui-input" placeholder="点击选择" onclick="layui.laydate({elem: this, festival: true})">
+                    </div>
+
+                    <div class="form-item" style="width: 8%">
+                        <label class="layui-form-label" style="float: right;">专家 :</label>
+                    </div>
+                    <div class="form-item" style="width: 15%;position: relative" >
+                        <input type="text" name="title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                        <i class="layui-icon" style="position: absolute;top: 13px;right: 8px">&#xe615;</i>
+                    </div>
+                    <div class="form-item" style="width: 15%;text-align: center" >
+                        <button class="layui-btn layui-btn-normal">查询</button>
+                    </div>
+                </span>
+            </div>
+            <div class="layui-clear"></div>
+            <!--tab-item-->
+            <div class="attention-bottom layui-tab-item layui-show">
+                <table class="layui-table" lay-even lay-skin="nob">
+                    <colgroup>
+                        <col width="200">
+                        <col width="130">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>
+                    <span class="layui-form">
+                    <input class="chooseAll" type="checkbox" name="" title="全选" lay-filter="checkbox">
+                    </span>
+                            <button class="layui-btn layui-btn-primary default-like">删除</button>
+                        </th>
+                        <th style="text-align: center">类型</th>
+                        <th style="text-align: center">标题</th>
+                        <th style="text-align: center">主持人</th>
+                        <th style="text-align: center">时间</th>
+                        <th style="text-align: center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span class="layui-form">
+                                <input class="checkbox" type="checkbox" choosed="false"  lay-skin="primary" lay-filter="checkbox1">
+                            </span>
+                            <div class="videoImg-small"></div>
+                        </td>
+                        <td>陈某某</td>
+                        <td>重庆医科大学</td>
+                        <td>教授</td>
+                        <td>2017-6-13 14:00</td>
+                        <td>
+                            <i class="icon iconfont icon-chakantiezishipin" style="font-size: 23px;cursor: pointer"></i>
+                            <i class="icon iconfont icon-delete" style="font-size: 25px;cursor: pointer;margin-left: 10px"></i>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="page"></div>
+                <div class="layui-clear"></div>
+            </div>
+
+            <div class="attention-bottom layui-tab-item">
+                <table class="layui-table" lay-even lay-skin="nob">
+                    <colgroup>
+                        <col width="200">
+                        <col width="150">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>
+                    <span class="layui-form">
+                    <input class="chooseAll" type="checkbox" name="" title="全选" lay-filter="checkbox">
+                    </span>
+                            <button class="layui-btn layui-btn-primary default-like">删除</button>
+                        </th>
+                        <th style="text-align: center">类型</th>
+                        <th style="text-align: center">标题</th>
+                        <th style="text-align: center">主持人</th>
+                        <th style="text-align: center">时间</th>
+                        <th style="text-align: center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span class="layui-form">
+                                <input class="checkbox" type="checkbox" choosed="false"  lay-skin="primary" lay-filter="checkbox1">
+                            </span>
+                            <div class="videoImg-small"></div>
+                        </td>
+                        <td>陈某某</td>
+                        <td>重庆医科大学</td>
+                        <td>教授</td>
+                        <td>2017-6-13 14:00</td>
+                        <td>
+                            <i class="icon iconfont icon-chakantiezishipin" style="font-size: 23px;cursor: pointer"></i>
+                            <i class="icon iconfont icon-delete" style="font-size: 25px;cursor: pointer;margin-left: 10px"></i>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="page"></div>
+                <div class="layui-clear"></div>
+            </div>
+
+            <div class="attention-bottom layui-tab-item">
+                <table class="layui-table" lay-even lay-skin="nob">
+                    <colgroup>
+                        <col width="200">
+                        <col width="150">
+                        <col>
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>
+                    <span class="layui-form">
+                    <input class="chooseAll" type="checkbox" name="" title="全选" lay-filter="checkbox">
+                    </span>
+                            <button class="layui-btn layui-btn-primary default-like">删除</button>
+                        </th>
+                        <th style="text-align: center">类型</th>
+                        <th style="text-align: center">标题</th>
+                        <th style="text-align: center">主持人</th>
+                        <th style="text-align: center">观看时间</th>
+                        <th style="text-align: center">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <span class="layui-form">
+                                <input class="checkbox" type="checkbox" choosed="false"  lay-skin="primary" lay-filter="checkbox1">
+                            </span>
+                            <div class="videoImg-small"></div>
+                        </td>
+                        <td>陈某某</td>
+                        <td>重庆医科大学</td>
+                        <td>教授</td>
+                        <td>2017-6-13 14:00</td>
+                        <td>
+                            <i class="icon iconfont icon-chakantiezishipin" style="font-size: 23px;cursor: pointer"></i>
+                            <i class="icon iconfont icon-delete" style="font-size: 25px;cursor: pointer;margin-left: 10px"></i>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="page"></div>
+                <div class="layui-clear"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

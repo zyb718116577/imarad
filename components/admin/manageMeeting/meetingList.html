@@ -1,0 +1,164 @@
+<div class="manMeeting-box animated fadeInRight">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <!--头部tab菜单-->
+        <ul class="layui-tab-title tab" style="padding-bottom: 0">
+            <li class="layui-this"><span class="user-type"></span>管理</li>
+        </ul>
+        <div style="background: #e6eaed;width: 100%;height: 20px"></div>
+        <!--tab子菜单-->
+        <div class="layui-tab-content tab-containner">
+            <!--搜索容器-->
+            <div class="content-top"></div>
+
+            <!--清浮动-->
+            <div class="layui-clear"></div>
+
+            <!--列表容器-->
+            <div class="attention-bottom"></div>
+
+            <!--分页-->
+            <div id="page" class="page"></div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!--搜索模板-->
+<script id="query" type="text/html">
+    <form class="layui-form-item layui-form">
+        {{#  layui.each(d.fieldInfos, function(index, item){ }}
+        {{#  if(item.queryType == '1'){ }}
+        <div class="layui-inline">
+            <label class="layui-form-label" style="width: auto;padding: 5px 15px">{{item.showName}} :</label>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" name="{{item.fieldName}}" placeholder="请输入{{item.showName}}" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        {{# } }}
+        {{#  if(item.queryType == '2'){ }}
+        <div class="layui-inline">
+            <label class="layui-form-label" style="width: auto">{{item.showName}} :</label>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="text" name="{{item.fieldName}}" placeholder="请输入{{item.showName}}" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        {{# } }}
+        {{#  if(item.queryType == '3'){ }}
+        <div class="layui-inline between" name="{{item.fieldName}}">
+            <label class="layui-form-label" style="width: auto">{{item.showName}} :</label>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="number" oninput="value=value.replace(/\D/g,'');" placeholder="最小值" autocomplete="off" class="layui-input between-item">
+            </div>
+            <div class="layui-form-mid">-</div>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input type="number" oninput="value=value.replace(/\D/g,'');" placeholder="最大值" autocomplete="off" class="layui-input between-item">
+            </div>
+        </div>
+        {{# } }}
+        {{#  if(item.queryType == '4'){ }}
+        <div class="layui-inline">
+            <label class="layui-form-label" style="width: auto">{{item.showName}} :</label>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input class="layui-input" name="{{item.fieldName}}" placeholder="点击选择" onclick="layui.laydate({elem: this, istime: true,format: 'YYYY-MM-DD hh:mm:ss'})">
+            </div>
+        </div>
+        {{# } }}
+        {{#  if(item.queryType == '5'){ }}
+        <div class="layui-inline between" name = "{{item.fieldName}}">
+            <label class="layui-form-label" style="width: auto">{{item.showName}} :</label>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input class="layui-input between-item"  placeholder="点击选择" onclick="layui.laydate({elem: this, istime: true,format: 'YYYY-MM-DD hh:mm:ss'})">
+            </div>
+            <div class="layui-form-mid">-</div>
+            <div class="layui-input-inline" style="width: 100px;">
+                <input class="layui-input between-item"  placeholder="点击选择" onclick="layui.laydate({elem: this, istime: true,format: 'YYYY-MM-DD hh:mm:ss'})">
+            </div>
+        </div>
+        {{# } }}
+        {{#  if(item.queryType == '6'){ }}
+        <div class="layui-inline">
+            <label class="layui-form-label" style="width: auto">{{item.showName}} :</label>
+            <div class="layui-input-inline form-item" style="width: 100px;">
+                <select name="{{item.fieldName}}" lay-filter="aihao">
+                    <option value="">请选择</option>
+                    {{#  layui.each(item.constantInfos, function(index, items){ }}
+                    <option value="{{items.csValue}}">{{items.csName}}</option>
+                    {{# });}}
+                </select>
+            </div>
+        </div>
+        {{# } }}
+        {{#  }); }}
+        <div class="layui-inline" style="margin-bottom: 9px;">
+            <div class="layui-input-inline form-item" style="width: 100px;">
+                <button class="layui-btn layui-btn-normal query-btn" lay-submit lay-filter="query" style="height: 30px;line-height: 30px;">查询</button>
+            </div>
+        </div>
+    </form>
+</script>
+<!--列表模板-->
+<script id="likePro" type="text/html">
+    <table class="layui-table" lay-even lay-skin="nob">
+        <colgroup>
+            <col width="200">
+            <col width="100">
+            <col width="20%">
+            <col >
+            <col width="15%">
+        </colgroup>
+        <thead>
+        <tr>
+            <th style="text-align: center">
+                <span class="layui-form">
+                <input class="chooseAll" type="checkbox" name="" title="全选" lay-filter="checkbox">
+                </span>
+                <button class="layui-btn layui-btn-primary default-like">删除</button>
+            </th>
+            {{#  layui.each(d.fieldInfos, function(index, item){ }}
+            {{# if (item.showIndex != 0){ }}
+            {{# if (item.fieldType != 'Pic'){ }}
+            <th style="text-align: center">{{ item.showName }}</th>
+            {{# } }}
+            {{# } }}
+            {{# }); }}
+            <th style="text-align: center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#  layui.each(d.fieldDatas, function(index, item){ }}
+        <tr title="点击进入管理页" uid="{{item.fieldInfos[0].data}}" live_id="{{item.fieldInfos[1].data}}">
+
+            {{#  layui.each(item.fieldInfos, function(index, items){ }}
+            {{# if (items.showIndex != 0 && items.fieldType != 'Pic'){ }}
+            {{# if (items.fieldType == 'Date'){ }}
+            <td>{{ util.timeFomatMinute(items.data) }}</td>
+            {{# }else{ }}
+            <td style="word-break: break-all">{{items.data}}</td>
+            {{# } }}
+            {{# }else if(items.fieldType == 'Pic'){  }}
+            <td>
+                <span class="layui-form">
+                    <input class="checkbox" type="checkbox" choosed="false"  lay-skin="primary" lay-filter="checkbox1">
+                </span>
+                <div class="videoImg-small">
+                    {{#if(items.data){}}
+                    <img src="{{d.SERVER_URL}}{{items.data}}" style="width: 100%;height: 100%;" alt="">
+                    {{# } }}
+                </div>
+            </td>
+            {{# } }}
+            {{# }); }}
+            <td>
+                <i onclick="window.location.hash='#meetingDetails?Id={{item.fieldInfos[1].data}}'" class="layui-icon" style="font-size: 23px" title="详情">&#xe60b;</i>
+                <i onclick="window.location.href='{{d.jumpUrl}}{{item.fieldInfos[1].data}}'" class="icon iconfont icon-chakantiezishipin" title="跳转到播放页" style="font-size: 20px;cursor: pointer;"></i>
+                <i class="icon iconfont icon-delete" title="删除" style="font-size: 22px;cursor: pointer;"></i>
+                <i onclick="window.location.hash='#createMeeting?type=true&liveId={{item.fieldInfos[1].data}}'" class="icon iconfont icon-bianji" title="编辑" style="font-size: 20px;cursor: pointer"></i>
+            </td>
+        </tr>
+        {{#  }); }}
+        </tbody>
+    </table>
+    <div class="layui-clear"></div>
+</script>

@@ -1,0 +1,474 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>安锐达直播</title>
+
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow"/>
+    <meta name="keywords" content="slicease.js,playease.js,chatease.js,chatease-server,rtmpmate"/>
+    <meta name="description" content=""/>
+    <meta name="author" content="Tony Lau"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="App-Config" content="fullscreen=yes, useHistoryState=yes, transition=yes"/>
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .disgraceful {
+            width: 100%;
+            height: 100%;
+            background: black;
+            opacity: .5;
+            position: fixed;
+            z-index: 9999;
+            display: none;
+        }
+
+        .password-box {
+            position: absolute;
+            width: 5.4rem;
+            height: 3.1rem;
+            background: #ebebec;
+            z-index: 99999;
+            border-radius: 5px;
+            left: 50%;
+            margin-left: -2.7rem;
+            top: 50%;
+            margin-top: -1.5rem;
+            text-align: center;
+            display: none;
+        }
+
+        .password-box p {
+            font-size: .34rem;
+            margin-top: .46rem;
+            margin-bottom: -.1rem
+        }
+
+        .password-box input {
+            width: 4.6rem;
+            height: .6rem;
+            margin: 0;
+            padding: 0;
+            border-radius: 3px;
+            border: 1px solid #d9d9d9;
+            font-size: .26rem;
+            padding-left: .1rem;
+        }
+
+        .password-footer {
+            width: 100%;
+            height: .88rem;
+            display: flex;
+            font-size: .32rem;
+            position: absolute;
+            bottom: 0;
+            border-top: 1px solid #d9d9d9;
+        }
+
+        .sure {
+            flex: 1;
+            border: none;
+            margin: 0;
+            padding: 0;
+            background: #ebebec;
+            border-bottom-left-radius: 5px;
+            color: #157efb;
+            border-bottom-right-radius: 5px;
+        }
+
+        .center-line {
+            width: 1px;
+            height: 100%;
+            background: #d9d9d9;
+        }
+
+        .cancel {
+            flex: 1;
+            border: none;
+            margin: 0;
+            padding: 0;
+            background: #ebebec;
+            border-bottom-right-radius: 5px;
+            color: #157efb;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script type='text/javascript'>
+        (function () {
+            if (!/*@cc_on!@*/0) {
+                return;
+            }
+
+            var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+            var i = e.length;
+            while (i--) {
+                document.createElement(e[i]);
+            }
+        })()
+    </script>
+
+    <style type='text/css' media='screen'>
+        article, aside, dialog, footer, header, section, footer, nav, figure, menu {
+            display: block;
+        }
+    </style>
+    <![endif]-->
+
+    <link type='text/css' rel='stylesheet' href='css/style.css'/>
+    <script src="../../../lib/jquery.min.js"></script>
+    <script type='text/javascript' src='../../../static/js/phone/playease.js'></script>
+    <script type='text/javascript' src='../../../static/js/phone/chatease.min.js'></script>
+    <script type='text/javascript' src='../../../static/js/phone/phonePlay.js'></script>
+</head>
+<body ontouchstart=''>
+<div style="text-align: center;top: 50%;position: fixed;margin-top: -16px;left: 50%;margin-left: -16px;display:none"
+     id="loading">
+    <img src="../../../img/loading.gif">
+</div>
+<div class="disgraceful"></div>
+<div class="password-box">
+    <p style="color: black;margin-bottom: .25rem">请输入观看密码</p>
+    <input placeholder="password" id="password" type="password">
+    <div class="password-footer">
+        <button class="sure">确 定</button>
+    </div>
+</div>
+<header>
+
+</header>
+
+<div class='wrap'>
+    <div class=''>
+        <section>
+            <div class='ol-status' style="display: none">
+                <label>Online: </label>
+                <span id='ol-users'>0</span>
+            </div>
+
+            <div class='samplewrap'>
+                    <div id="playwrapBox" style="width: 100%">
+                        <div id='playwrap'>
+                            <div id="videoImg"
+                                 style="width: 100%;height: 100%;background: black;position: absolute;z-index: 99">
+                                <img src="" style="width: 100%" id="videoInfo">
+                                <div style="width: 100%;text-align: center;position: absolute;top:17%;font-size: .32rem;color: white">
+                                    <span class="live-type"></span>
+                                </div>
+                            </div>
+                            <div id='player'>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <div id='chatwrap' style="z-index: 999">
+                    <div id='chat' style="z-index: 999"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<footer>
+
+</footer>
+
+<script>
+    $('#playwrapBox').css('height',($(window).width()) * 0.5625 + 40);
+     /*localStorage.clear();*/
+    var utilOther = {
+        getRequest: function () {
+            var url = document.location.href; //获取url中"?"符后的字串
+            var strs = url.split("?");
+            return strs[strs.length - 1];
+        },
+        getType: function () {
+            var strs = utilOther.getRequest().split('=');
+            return parseInt(strs[2]);
+        },
+        getId: function () {
+            var strs = utilOther.getRequest().split('=');
+            return parseInt(strs[1]);
+        },
+        myAjax: function (param) {
+            var loading;
+            $.ajax({
+                type: param.method || "POST",
+                url: '../../../imarad/' + param.url,
+                data: param.postData || null,
+                dataType: "json",
+                cache: false,
+                async: param.async || true,
+                timeout: 5000,
+                contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                beforeSend: function () {
+                    if (param.button) {
+                        param.button.attr("disabled", true);
+                    }
+                    if (param.showAjaxLoading) {
+                        $('#loading').show();
+                    }
+                },
+                success: function (data) {
+                    if (data) {
+                        param.successFn(data);
+                    }
+                    if (param.button) {
+                        param.button.attr("disabled", false)
+                    }
+
+                },
+                error: function (error) {
+                    if (param.errorFn) {
+                        param.errorFn(error);
+                    }
+                    if (error.statusText == 'Gateway Time-out' || error.statusText == 'timeout') {
+                        alert('服务器连接超时');
+                    } else {
+                        var msg = $.parseJSON(error.responseText);
+                        alert(msg.msg);
+                    }
+                    if (param.button) {
+                        param.button.attr("disabled", false)
+                    }
+                }
+            })
+        },
+    }
+    var id = utilOther.getId();
+    var type = utilOther.getType();
+    var url;
+    var postData;
+    var checkFlag = 0;
+    var playFlag = 0;
+    var cdnUrl;
+    var text;
+    var logoImg;
+    var livePushUrl;
+    if (localStorage.getItem('info')) {
+        var allInfo = JSON.parse(localStorage.getItem('info'));
+        $(allInfo).each(function (index, item) {
+            if (item.id === id && (item.endTime - (new Date()).getTime()) > 0) {
+                checkFlag = 1;
+            }
+        });
+    }
+    // 判断是直播还是录播
+    if (type == 1) {
+        url = 'tourist/get/liveInfo';
+        postData = {
+            liveId: id,
+            checkFlag: checkFlag,
+        }
+    } else {
+        url = 'tourist/get/videoInfo';
+        postData = {
+            videoId: id
+        }
+    }
+    utilOther.myAjax({
+        url: url,
+        postData: postData,
+        showAjaxLoading: true,
+        successFn: function (res) {
+            if (type == 1) {
+                logoImg = res.data.liveInfo.logoPath;
+                var img = res.data.liveInfo.picPath;
+                cdnUrl = res.data.liveInfo.cdnUrl;
+                livePushUrl = res.data.liveInfo.livePushUrl;
+                //判断是专家直播还是会议直播
+                if (res.data.liveInfo.liveType === 2) {
+                    text = '会议'
+                } else {
+                    text = '直播'
+                }
+                // 直播
+                if (res.data.liveInfo.picPath) {
+                    $('#videoInfo').attr('src', '../../../imarad/image/' + res.data.liveInfo.picPath);
+                } else {
+                    $('#videoInfo').attr('src', '../../../img/playState1.png');
+                }
+                $('#loading').hide();
+                cdnUrl ? playFlag = 1 : playFlag = 0;
+                // 获取视频的播放状态
+                switch (res.data.liveInfo.liveStatus) {
+                    // 停播
+                    case -1:
+                        paler.initChat(id);
+                        $('#videoInfo').attr('src', '../../../img/suspension.jpg');
+                        break;
+                    // 未开始
+                    case 0:
+                        paler.initChat(id);
+                        if (img !== '') {
+                            $('#videoInfo').attr('src', '../../../imarad/image/' + img);
+                        } else {
+                            $('#videoInfo').attr('src', '../../../img/not-begin.jpg');
+                        }
+                        break;
+                    // 正在播放
+                    case 1:
+                        // 判断是否需要输入观看密码
+                        if (!cdnUrl) {
+                            $('#videoInfo').attr('src', '../../../img/suspen.jpg');
+                            $('.password-box').show();
+                            $('.disgraceful').show();
+                            paler.initChat(id);
+                        } else {
+                            // 播放地址
+                            $('#videoImg').hide();
+                            paler.init(livePushUrl, '', id);
+                        }
+                        break;
+                    // 暂停
+                    case 2:
+                        paler.initChat(id);
+                        $('#videoInfo').attr('src', '../../../img/suspend.jpg');
+                        break;
+                }
+
+            } else {
+                // 录播
+                $('#loading').hide();
+                $('#videoImg').hide();
+                var videoPath = res.data.viodeInfo.videoPath;
+                paler.init('', '', id,videoPath);
+            }
+        },
+        errorFn: function (error) {
+
+        }
+    });
+
+    // rem 的计算
+    !function (n) {
+        var e = n.document,
+            t = e.documentElement,
+            i = 750,
+            d = i / 100,
+            o = "orientationchange" in n ? "orientationchange" : "resize",
+            a = function () {
+                var n = t.clientWidth || 320;
+                n > 750 && (n = 750), t.style.fontSize = n / d + "px"
+            };
+        e.addEventListener && (n.addEventListener(o, a, !1), e.addEventListener("DOMContentLoaded", a, !1))
+    }(window);
+
+    // 输入密码
+    $('.sure').click(function () {
+        if ($.trim($('#password').val()) === '') {
+            alert('密码不能为空')
+        } else {
+            utilOther.myAjax({
+                url: 'tourist/check/authority',
+                postData: {
+                    checkCode: $('#password').val(),
+                    liveId: id,
+                },
+                button: $(this),
+                showAjaxLoading: true,
+                successFn: function (res) {
+                    if (res.code === 0) {
+                        // 把此视频的id和输入的时间存储在本地
+                        var arr = [];
+                        var obj = {};
+                        var d1 = new Date();
+                        var d2 = new Date(d1);
+                        d2.setDate(d1.getDate() + 7);
+                        obj.id = id,
+                            obj.endTime = d2.getTime();
+                        arr.push(obj);
+                        if (!localStorage.getItem('info')) {
+                            localStorage.setItem('info', JSON.stringify(arr));
+                        } else {
+                            var a = JSON.parse(localStorage.getItem('info'));
+                            for (var i = 0; i < a.length; i++) {
+                                if (a[i].id === id) {
+                                    a.splice(i, 1);
+                                }
+                                var b = arr.concat(a);
+                                localStorage.setItem('info', JSON.stringify(b));
+                            }
+                            ;
+                        }
+                        // 加载视频
+                        $('.password-box').hide();
+                        $('.disgraceful').hide();
+                        livePushUrl = res.data.livePushUrl;
+                        paler.initPlayer(livePushUrl, '');
+                        playFlag = 1;
+                        $('#videoImg').hide();
+                        $('#loading').hide();
+                    } else {
+                        alert(res.msg);
+                    }
+                },
+                errorFn: function (error) {
+
+                }
+            });
+        }
+
+    });
+
+    // 给聊天室写的接口
+    var forChat = {
+        init: function (type) {
+            switch (type) {
+                // 停播
+                case '-1':
+                    if (player) {
+                        player.fullpage(true);
+                        player.fullscreen(true);
+                        player.stop();
+                        player = undefined;
+                        normalFullpageStyle({exit:true});
+                    }
+                    //$('#player').hide();
+                    $('#videoImg').show();
+                    $('#videoInfo').attr('src', '../../../img/suspension.jpg');
+                    $('.password-box').hide();
+                    $('.disgraceful').hide();
+                    break;
+                // 正在播放
+                case '1':
+                    if (playFlag === 1) {
+                        $('#playwrap').show();
+                        $('#videoImg').hide();
+                        paler.initPlayer(livePushUrl, '')
+                    } else {
+                        $('#videoInfo').attr('src', '../../../img/suspen.jpg');
+                        $('.password-box').show();
+                        $('.disgraceful').show();
+                    }
+                    break;
+                // 暂停
+                case '2':
+                    if (player) {
+                        player.fullpage(true);
+                        player.fullscreen(true);
+                        player.stop();
+                        player = undefined;
+                        normalFullpageStyle({exit:true});
+                    }
+                    $('#player').hide();
+                    $('#videoImg').show();
+                    $('#videoInfo').attr('src', '../../../img/suspend.jpg');
+                    $('.password-box').hide();
+                    $('.disgraceful').hide();
+                    break;
+            }
+        }
+    }
+</script>
+</body>

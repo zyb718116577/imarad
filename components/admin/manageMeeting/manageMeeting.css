@@ -1,0 +1,183 @@
+.manMeeting-box{
+    color: #989898;
+    background: #ffffff;
+}
+.tab li{
+    line-height: 25px;
+    padding: 0 15px;
+}
+
+.tab ,.tab-containner{
+    padding: 20px 30px;
+}
+.tab .layui-this{
+    color: #00a2d7!important;
+}
+.tab .layui-this:after{
+    border-bottom: 3px solid #00a2d7!important;
+}
+.tab .layui-this:before{
+    position: absolute;
+    left: 44%;
+    top: 27px;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 6px solid #ffffff;
+    border-bottom-color: #01a2d7;
+    border-radius: 2px 2px 0 0;
+    -webkit-box-sizing: border-box!important;
+    -moz-box-sizing: border-box!important;
+    box-sizing: border-box!important;
+    pointer-events: none;
+}
+.man-left{
+    width: 62%;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 665px;
+}
+.man-right{
+    width: 35%;
+    display: inline-block;
+    float: right;
+    color: #0C0C0C;
+    height: 100%;
+}
+.man-video{
+    border: 1px solid #d2d2d2;
+}
+.video{
+    width: 100%;
+    background: #8c8c8c;
+}
+.video-tool{
+    height: 70px;
+    background: #f1f1f1;
+    text-align: center;
+    line-height: 70px;
+}
+.video-tool button{
+    height: 35px;
+    line-height: 35px;
+    background: #00a1d7;
+}
+.edit-btn,.next-list-btn{
+    float: right;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 30px;
+    background: #f4f4f4;
+    color: #0C0C0C;
+    border: 1px solid #d2d2d2;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.man-left p{
+    line-height: 35px;
+    color: #0C0C0C;
+}
+.descibes{
+    display: inline-block;
+    width: 75%;
+}
+.span1{
+    display: inline-block;
+    height: 100%;
+    width: 70px;
+    vertical-align: top;
+}
+.man-left input{
+    margin-left: 10px;
+    height: 25px;
+    line-height: 25px;
+    width: 70%;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.chat-title,.chat-tool{
+    height: 50px;
+    line-height: 50px;
+    background: #f1f1f1;
+    padding: 0 20px;
+}
+.chat-title button,.chat-tool button{
+    height: 30px;
+    line-height: 30px;
+    background: #00a1d7;
+    float: right;
+    margin-top: 10px;
+}
+.chat-main{
+    overflow: auto;
+    background: #fff;
+    border: 1px solid #d2d2d2;
+    border-right: none;
+    border-left: none;
+}
+.chat-tool input{
+    margin-top: 10px;
+    height: 30px;
+    line-height: 30px;
+    z-index: 1;
+    width: 78%;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+@media screen and (max-width:1350px){
+    .chat-tool input{
+        width: 70%;
+    }
+}
+.man-bottom,.man-bottom a{
+    color: #0C0C0C;
+}
+.man-bottom{
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #d2d2d2;
+    text-align: center;
+}
+.jianju{
+    display: inline-block;
+    width: 10px;
+}
+.statistics{
+    border-radius: 5px;
+    margin-right: 20px;
+}
+.statistics-header{
+    text-align: right;
+    height: 52px;
+    line-height: 52px;
+    color: #161616;
+    padding-right: 50px;
+    border-bottom: 1px solid #e1e1e1;
+    background: #f1f1f1;
+}
+.statistics-main{
+    height: 600px;
+}
+.meeting-have div{
+    padding: 40px 0!important;
+}
+.layui-layer-dialog .layui-layer-btn{
+    text-align: center;
+    padding-bottom: 30px;
+}
+.now-setting{
+    color: #2e8ded;
+    display: block!important;
+}
+.hover-tr:hover .setting{
+    display: block!important;
+}
+.copy-btn{
+    height: 25px;
+    line-height: 25px;
+    margin-left: 5px;
+    width: 46px;
+}

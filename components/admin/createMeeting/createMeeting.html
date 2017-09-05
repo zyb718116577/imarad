@@ -1,0 +1,473 @@
+<div class="createMeeting-box animated fadeInRight"></div>
+<script type="text/html" id="creat-temp">
+    <div class="info-header content-header" style="margin-bottom: 0">
+        <p class="content-p"><span class="is-edit">创建</span>{{d.type_name}}<span class="create-title" style="color: #000"></span></p>
+    </div>
+    <div class="content-main step-body myStep">
+        <div class="step-header" style="height: 0;overflow: hidden;">
+            <ul>
+                <li><p>创建{{d.type_name}}</p></li>
+                {{# if(d.type_number=='3'){ }}
+                <li><p>访问权限</p></li>
+                {{# } }}
+                <li><p>日程安排</p></li>
+            </ul>
+        </div>
+        <div class="step-content">
+            <!--创建会议-->
+            <div class="step-list">
+                <!--上边边表格-->
+                <div class="left">
+                    <div class="layui-form" action="">
+                        <!--编辑时候存liveId-->
+                        {{# if(d.imaradLiveInfoEntity.liveId){ }}
+                        <div class="layui-form-item" style="display: none">
+                            <input name="liveId" type="hidden" value="{{d.imaradLiveInfoEntity.liveId}}">
+                        </div>
+                        {{# } }}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">{{d.type_name}}主题 <span style="color: red">*</span></label>
+                            <div class="layui-input-block">
+                                <input type="text" name="liveTitle" value="{{d.imaradLiveInfoEntity.liveTitle||''}}" lay-verify="required|theme"
+                                       placeholder="请输入{{d.type_name}}主题" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">{{d.type_name}}简介 <span style="color: red">*</span></label>
+                            <div class="layui-input-block">
+                                <textarea name="liveDesc" lay-verify="required|commonlength" placeholder="100字以内" class="layui-textarea">{{d.imaradLiveInfoEntity.liveDesc||''}}</textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">开播时间 <span style="color: red">*</span></label>
+                            <div class="layui-input-block" style="margin-right: 0">
+                                <!--{{# if(d.imaradLiveInfoEntity.liveStartTime!=undefined){ }}-->
+                                <!--<input class="layui-input shouldEarly"  value="{{util.timeFomatMinute(d.imaradLiveInfoEntity.liveStartTime)||''}}"
+                                       style="width: 35%;display: inline-block" lay-verify="required|shouldLate"
+                                       placeholder="点击选择开始时间" name="liveStartTime"
+                                       onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm'})">
+                                ——
+                                <input class="layui-input" value="{{util.timeFomatMinute(d.imaradLiveInfoEntity.liveEndTime)||''}}"
+                                       style="width: 35%;display: inline-block" lay-verify="required|shouldLate|unableEarlyBegin"
+                                       placeholder="点击选择结束时间" name="liveEndTime"
+                                       onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm'})">-->
+                                <!--{{# }else{ }}-->
+                                <!--7878-->
+                                <!--{{# } }}-->
+
+
+                                <input class="layui-input shouldEarly"  value="{{d.imaradLiveInfoEntity.liveStartTime||''}}"
+                                       style="width: 35%;display: inline-block" lay-verify="required|shouldLate"
+                                       placeholder="点击选择开始时间" name="liveStartTime"
+                                       onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                                ——
+                                <input class="layui-input" value="{{d.imaradLiveInfoEntity.liveEndTime||''}}"
+                                       style="width: 35%;display: inline-block" lay-verify="required|shouldLate|unableEarlyBegin"
+                                       placeholder="点击选择结束时间" name="liveEndTime"
+                                       onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+
+                            </div>
+                        </div>
+                        <!--会议才有背景和logo-->
+                        {{# if(d.type_number=='3'){ }}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">{{d.type_name}}组Logo</label>
+                            <div class="layui-input-block">
+                                <div class="layui-box layui-upload-button">
+                                    <span type="file" class="filePicker layui-upload-icon">上传图片</span>
+                                </div>
+                                <span style="margin-left: 10px">图片小于1M（jpg,png）</span>
+                                <input type="hidden" name="logoPath" value="{{d.imaradLiveInfoEntity.logoPath||''}}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">背景页</label>
+                            <div class="layui-input-block">
+                                <div class="layui-box layui-upload-button">
+                                    <span type="file" class="filePicker layui-upload-icon">上传图片</span>
+                                </div>
+                                <span style="margin-left: 10px">图片小于1M（jpg,png）</span>
+                                <input type="hidden" name="bgPicPath" value="{{d.imaradLiveInfoEntity.bgPicPath||''}}">
+                            </div>
+                        </div>
+                        {{# } }}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">海报</label>
+                            <div class="layui-input-block">
+                                <!--<div class="poster" style="position: relative">海报
+                                    <img id="poster" src="" alt=""
+                                         style="position: absolute;top: 0;left: 0;display: none;width: 100%;height: 100%">
+                                    <input type="hidden" name="picPath" value="{{d.imaradLiveInfoEntity.picPath||''}}">
+                                </div>-->
+                                <input type="hidden" name="picPath" value="{{d.imaradLiveInfoEntity.picPath||''}}">
+                                <div class="layui-box layui-upload-button">
+                                    <span type="file" class="filePicker layui-upload-icon">上传图片</span>
+                                </div>
+                                <span style="margin-left: 10px">图片小于1M（jpg,png）</span>
+                            </div>
+                            <!--<div class="layui-input-block">
+                                <div class="layui-box layui-upload-button usually-poster">
+                                    <div>
+                                        <input type="file"  lay-type="images" class="layui-upload-file">
+                                    </div>
+                                    <span class="layui-upload-icon">通用海报</span>
+                                </div>
+                            </div>-->
+                        </div>
+                        <div class="layui-form-item" style="display: none">
+                            <div class="layui-input-block">
+                                <button class="layui-btn hid-base" lay-submit="" lay-filter="baseInfo">立即提交</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--预览-->
+                    <div class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">预览 </label>
+                        <div class="layui-input-block">
+                            <div class="preview">
+                                <!--编辑时候-->
+                                {{# if(d.imaradLiveInfoEntity.bgPicPath){ }}
+                                <div class="background">
+                                    <img class="background-backshow" id="background" src="{{d.SERVER_URL}}{{d.imaradLiveInfoEntity.bgPicPath||''}}" alt="">
+                                </div>
+                                <!--新增时候-->
+                                {{# }else{ }}
+                                <div class="background" style="display: none;">
+                                    <img style="display: none;" class="background-backshow" id="background" src="" alt="">
+                                </div>
+                                {{# }  }}
+                                <div class="playerPreview" style="position: relative">
+                                    <div class="preview-logo" style="position: absolute;top: 60px;right: 45%;z-index: 2">
+                                        {{# if(d.imaradLiveInfoEntity.logoPath){ }}
+                                        <img class="logo-backshow" src="{{d.SERVER_URL}}{{d.imaradLiveInfoEntity.logoPath}}" alt="">
+                                        {{# }else{ }}
+                                        <img class="logo-backshow" src="./img/adminlogo.png" alt="">
+                                        {{# } }}
+                                    </div>
+                                    <div class="poster-back">
+                                        <img class="poster-back-img" src="{{d.SERVER_URL}}{{d.imaradLiveInfoEntity.picPath||''}}" alt="">
+                                    </div>
+                                    <img src="./img/preview.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <p style="float: right;color: red">注！预览效果仅供参考。</p>
+                </div>
+                <hr>
+                <div class="bottom">
+                    <button class="layui-btn nextBtn" which="baseInfo">下一步</button>
+                    <button class="layui-btn defaultBtn">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <!--日程安排-->
+        {{# if(d.type_number=='3'){ }}
+        <div class="step-list">
+            <div style="text-align: right;margin: -10px 40px 20px 0">
+                <a class="incExcel" href="imarad/ability/get/file?fileName=schedule_template.xlsx" style="margin-left: 15px;text-decoration: none" target="_blank"><i class="layui-icon">&#xe61e;</i> 下载日程模板</a>
+               <!-- <button class="layui-btn layui-btn-primary layui-btn-small"><i class="layui-icon">&#xe61d;</i>导入日程</button>-->
+                <span class="upload-schedule layui-upload-icon" style="display: inline-block;color: #60b878;"><i class="layui-icon" style="font-size: 17px">&#xe61d;</i>导入日程</span>
+            </div>
+            {{# if(d.liveDetailList){ }}
+            {{#  layui.each(d.liveDetailList, function(index, item){ }}
+            <div class="layui-form schedule" action="" style="padding-top: 50px;border-top: 1px dashed #d5d5d5;margin-bottom: 50px">
+                <div class="layui-form-item" style="display: inline-block;width: 30%">
+                    <label class="layui-form-label">演讲主题 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                        <input type="text" name="liveTitle" value="{{item.liveTitle||''}}" required lay-verify="required|theme" placeholder="请输入演讲主题"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="display: inline-block;width: 68%">
+                    <label class="layui-form-label tips-element">时间段 <span style="color: red">*</span></label>
+                    <div class="layui-input-block" style="margin-right: 0">
+                        <input class="layui-input shouldEarly" name="beginTime" lay-verify="required|shouldLate" value="{{item.beginTime||''}}"
+                               style="width: 44%;display: inline-block" placeholder="点击选择开始时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"> ——
+                        <input class="layui-input" name="endTime" value="{{item.endTime||''}}" lay-verify="required|shouldLate|unableEarlyBegin"
+                               style="width: 45%;display: inline-block" placeholder="点击选择结束时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="display: inline-block;width: 30%">
+                    <label class="layui-form-label">演讲人 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                        <input type="text" name="speakerName" value="{{item.speakerName||''}}" required lay-verify="required|chinaname" placeholder="请输入演讲人"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div style="display: inline-block;">
+                    <label class="layui-form-label">头衔 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                       <!-- <select name="interest" lay-filter="">
+                            <option value="-1">请选择头衔</option>
+                            <option value="0">白名单</option>
+                            <option value="1">F码（验证码）</option>
+                        </select>-->
+                        <input type="text" name="speakerTitle" value="{{item.speakerTitle||''}}" required lay-verify="required" placeholder="请输入头衔"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="width: 80%;position: relative;padding-right: 145px">
+                    <label class="layui-form-label">演讲简介 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                        <textarea name="detailDesc" lay-verify="required|commonlength" placeholder="100字以内..." class="layui-textarea">{{item.detailDesc||''}}</textarea>
+                    </div>
+                    <button class="layui-btn layui-btn-primary del-btn" onclick="util.deleteEvent(this,'确定要删除这条日程吗?')"><i class="layui-icon">&#xe640;</i>删除该条日程</button>
+                </div>
+                <!--编辑时候把liveId  recId 放在隐藏框-->
+                <div class="layui-form-item" style="display: inline-block;width: 30%;display: none">
+                    <input type="hidden" name="liveId" value="{{item.liveId||''}}">
+                    <input type="hidden" name="recId" value="{{item.recId||''}}">
+                </div>
+                <div class="layui-form-item list-hide-submit" style="display: none">
+                    <div class="layui-input-block">
+                        <button class="layui-btn list-submit" lay-submit="" lay-filter="detaiList">立即提交</button>
+                    </div>
+                </div>
+            </div>
+            {{#  });  }}
+            {{# }else{ }}
+            <div class="layui-form schedule" action="" style="padding-top: 50px;border-top: 1px dashed #d5d5d5;margin-bottom: 50px">
+                <div class="layui-form-item" style="display: inline-block;width: 30%">
+                    <label class="layui-form-label">演讲主题 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                        <input type="text" name="liveTitle" value="" required lay-verify="required|theme" placeholder="请输入演讲主题"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="display: inline-block;width: 68%">
+                    <label class="layui-form-label tips-element">时间段 <span style="color: red">*</span></label>
+                    <div class="layui-input-block" style="margin-right: 0">
+                        <input class="layui-input shouldEarly" name="beginTime" lay-verify="required|shouldLate" value=""
+                               style="width: 44%;display: inline-block" placeholder="点击选择开始时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"> ——
+                        <input class="layui-input" name="endTime" value="" lay-verify="required|shouldLate|unableEarlyBegin"
+                               style="width: 45%;display: inline-block" placeholder="点击选择结束时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="display: inline-block;width: 30%">
+                    <label class="layui-form-label">演讲人 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                        <input type="text" name="speakerName" value="" required lay-verify="required|chinaname" placeholder="请输入演讲人"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div style="display: inline-block;">
+                    <label class="layui-form-label">头衔 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                        <!-- <select name="interest" lay-filter="">
+                             <option value="-1">请选择头衔</option>
+                             <option value="0">白名单</option>
+                             <option value="1">F码（验证码）</option>
+                         </select>-->
+                        <input type="text" name="speakerTitle" value="" required lay-verify="required" placeholder="请输入头衔"
+                               autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="width: 80%;position: relative;padding-right: 145px">
+                    <label class="layui-form-label">演讲简介 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                        <textarea name="detailDesc" lay-verify="required|commonlength" placeholder="100字以内..." class="layui-textarea"></textarea>
+                    </div>
+                    <button class="layui-btn layui-btn-primary del-btn" onclick="util.deleteEvent(this,'确定要删除这条日程吗?')"><i class="layui-icon">&#xe640;</i>删除该条日程</button>
+                </div>
+                <div class="layui-form-item list-hide-submit" style="display: none">
+                    <div class="layui-input-block">
+                        <button class="layui-btn list-submit" lay-submit="" lay-filter="detaiList">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </div>
+            {{# } }}
+
+            <div class="bottom">
+                <button class="layui-btn add-speech" style="background: #00a1d7">添加一条日程</button>
+                <button class="layui-btn preBtn" style="background: #00a1d7">上一步</button>
+                <button class="layui-btn nextBtn" which="list">下一步</button>
+                <button class="layui-btn defaultBtn">取消</button>
+            </div>
+        </div>
+        {{# } }}
+        <!--权限控制-->
+        <div class="step-list">
+            <div class="layui-form" action="">
+                <div style="display: inline-block;width: 40%">
+                    <label class="layui-form-label">{{d.type_name}}权限 <span style="color: red">*</span></label>
+                    <div class="layui-input-block">
+                        <select name="authorityType" lay-filter="permission">
+                            <option value="-1">请选择控制类别</option>
+                            <option value="1">免费</option>
+                            <option value="2">密码</option>
+                            <option value="3">F码</option>
+                            <option value="4">白名单</option>
+                        </select>
+                    </div>
+                </div>
+                {{#  if(d.imaradLiveInfoEntity.liveId){ }}
+                <div class="layui-form-item" style="display: none;">
+                    <input type="hidden" name="liveId" value="{{d.imaradLiveAuthorityEntity.liveId||''}}">
+                    <input type="hidden" name="recId" value="{{d.imaradLiveAuthorityEntity.recId||''}}">
+                </div>
+                {{# } }}
+                <!--权限控制详情容器-->
+                <div style="width: 50%;display: inline-block" class="permissioncontainer"></div>
+                <!--白名单详情容器-->
+                <div class="white-list-container" style="margin-top: 50px;">
+                    <div class="white-list-details"></div>
+                    <!--分页-->
+                    <div id="page" style="float: right"></div>
+                    <!--<span class="show-more-span" style="float: right;display: none">已显示前20条信息。<span style="color: #00a0e9;cursor: pointer">点击查看全部</span></span>-->
+                </div>
+                <div class="layui-form-item" style="display: none">
+                    <div class="layui-input-block">
+                        <button class="layui-btn control-submit" lay-submit="" lay-filter="control">立即提交</button>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-top: 50px">
+            <div class="bottom">
+                <button class="layui-btn preBtn" style="background: #00a1d7">上一步</button>
+                <button class="layui-btn nextBtn">完成</button>
+                <button class="layui-btn defaultBtn">取消</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</script>
+
+<!--新增一条以及导入后的回显 日程模板-->
+<script type="text/html" id="schedule-temp">
+    {{#  layui.each(d.data, function(index, item){ }}
+    <div class="layui-form schedule {{d.classFlag||''}}" action="" style="padding-top: 50px;border-top: 1px dashed #d5d5d5;margin-bottom: 50px">
+        <div class="layui-form-item" style="display: inline-block;width: 30%">
+            <label class="layui-form-label">演讲主题 <span style="color: red">*</span></label>
+            <div class="layui-input-block">
+                <input type="text" name="liveTitle" value="{{item.liveTitle||''}}" required lay-verify="required|theme" placeholder="请输入演讲主题"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        {{# if(item.beginTime){ }}
+        <div class="layui-form-item" style="display: inline-block;width: 68%">
+            <label class="layui-form-label tips-element">时间段 <span style="color: red">*</span></label>
+            <div class="layui-input-block" style="margin-right: 0">
+                <input class="layui-input shouldEarly" name="beginTime" lay-verify="required|shouldLate" value="{{item.beginTime||''}}"
+                       style="width: 44%;display: inline-block" placeholder="点击选择开始时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"> ——
+                <input class="layui-input" name="endTime" value="{{item.endTime||''}}" lay-verify="required|shouldLate|unableEarlyBegin"
+                       style="width: 45%;display: inline-block" placeholder="点击选择结束时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+            </div>
+        </div>
+        {{# }else{ }}
+        <div class="layui-form-item" style="display: inline-block;width: 68%">
+            <label class="layui-form-label tips-element">时间段 <span style="color: red">*</span></label>
+            <div class="layui-input-block" style="margin-right: 0">
+                <input class="layui-input shouldEarly" name="beginTime" lay-verify="required|shouldLate" value=""
+                       style="width: 44%;display: inline-block" placeholder="点击选择开始时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"> ——
+                <input class="layui-input" name="endTime" value="" lay-verify="required|shouldLate|unableEarlyBegin"
+                       style="width: 45%;display: inline-block" placeholder="点击选择结束时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+            </div>
+        </div>
+        {{# } }}
+        <div class="layui-form-item" style="display: inline-block;width: 30%">
+            <label class="layui-form-label">演讲人 <span style="color: red">*</span></label>
+            <div class="layui-input-block">
+                <input type="text" name="speakerName" value="{{item.speakerName||''}}" required lay-verify="required|chinaname" placeholder="请输入演讲人"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div style="display: inline-block;">
+            <label class="layui-form-label">头衔 <span style="color: red">*</span></label>
+            <div class="layui-input-block">
+                <!-- <select name="interest" lay-filter="">
+                     <option value="-1">请选择头衔</option>
+                     <option value="0">白名单</option>
+                     <option value="1">F码（验证码）</option>
+                 </select>-->
+                <input type="text" name="speakerTitle" value="{{item.speakerTitle||''}}" required lay-verify="required" placeholder="请输入头衔"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" style="width: 80%;position: relative;padding-right: 145px">
+            <label class="layui-form-label">演讲简介 <span style="color: red">*</span></label>
+            <div class="layui-input-block">
+                <textarea name="detailDesc" lay-verify="required|commonlength" placeholder="100字以内..." class="layui-textarea">{{item.detailDesc||''}}</textarea>
+            </div>
+            <button class="layui-btn layui-btn-primary del-btn" onclick="util.deleteEvent(this,'确定要删除这条日程吗?')"><i class="layui-icon">&#xe640;</i>删除该条日程</button>
+        </div>
+        <div class="layui-form-item list-hide-submit" style="display: none">
+            <div class="layui-input-block">
+                <button class="layui-btn list-submit" lay-submit="" lay-filter="detaiList">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </div>
+    {{# }); }}
+</script>
+
+<!--权限控制对应的显示模板-->
+<div style="display: none;">
+    <div style="width: 50%" class="permission permission4">
+        <label class="layui-form-label">白名单 <span style="color: red">*</span></label>
+        <div class="layui-input-block" style="line-height: 36px">
+            <div style="display: inline-block;position: relative;margin-right: 15px">
+                <a class="incExcel downloadWhiteList" href="imarad/ability/get/file?fileName=white_list_template.xlsx" target="_blank" style="text-decoration: none"><i class="layui-icon">&#xe61e;</i>下载模板</a>
+            </div>
+            <div style="display: inline-block;position: relative">
+                <span class="upWhiteList layui-upload-icon" style="color: #60b878;"><i class="layui-icon">&#xe61d;</i>导入白名单</span>
+            </div>
+        </div>
+    </div>
+    <div style="width: 50%" class="permission permission3">
+        <label class="layui-form-label">F码 <span style="color: red">*</span></label>
+        <div class="layui-input-block">
+            <input type="number" required lay-verify="required" placeholder="F码个数"
+                   autocomplete="off" class="layui-input fcode-number f-hide" style="width: 25%;display: inline-block">
+            <span class="f-hide">&nbsp;&nbsp;个&nbsp;&nbsp;</span>
+            <button class="create-btn layui-btn layui-btn-primary layui-btn-small">生成</button>
+            <a class="incExcel downloadF" target="_blank" href="javascript:void(0)" style="display: none">下载F码</a>
+        </div>
+    </div>
+    <div style="width: 50%" class="permission permission2">
+        <label class="layui-form-label">密码 <span style="color: red">*</span></label>
+        <div class="layui-input-block">
+            <input type="password" name="pwdCode" required lay-verify="required|livePassword"
+                   placeholder="请输入密码" autocomplete="off" class="layui-input"
+                   style="width: 65%;display: inline-block">
+        </div>
+    </div>
+</div>
+<!--白名单回显模板-->
+<script type="text/html" id="white-list-temp">
+    <table class="layui-table" lay-even lay-skin="nob">
+        <tbody>
+        <thead>
+        <tr>
+            <th colspan="4" style="text-align: center">白名单列表</th>
+        </tr>
+        <tr>
+            <th>用户名</th>
+            <th>电话</th>
+            <th>用户名</th>
+            <th>电话</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{# if(d.length>0){ }}
+        {{#  for(var i = 0;i < d.length/2;i++){ }}
+        <tr>
+            <td>{{d[2*i].userName||''}}</td>
+            <td>{{d[2*i].userPhone||''}}</td>
+            <td>{{d[2*i+1].userName||''}}</td>
+            <td>{{d[2*i+1].userPhone||''}}</td>
+        </tr>
+        {{# } }}
+        {{# }else{ }}
+        <tr>
+            <td colspan="4" style="text-align: center">数据为空!</td>
+        </tr>
+        {{# } }}
+        </tbody>
+    </table>
+</script>

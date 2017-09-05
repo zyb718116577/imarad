@@ -1,0 +1,62 @@
+<div class="info-box animated fadeInRight">
+<div class="info-header content-header">
+    <p class="content-p">个人信息</p>
+</div>
+<div class="content-main">
+    <div class="main-left">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称 :</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别 :</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" value="男" title="男">
+                    <input type="radio" name="sex" value="女" title="女" checked>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">出生日期 :</label>
+                <div class="layui-input-block" style="margin-right: 0">
+                    <input class="layui-input" placeholder="点击选择" onclick="layui.laydate({elem: this, festival: true})">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">所在地 :</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入所在地" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="main-right">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <div style="overflow: hidden">
+                    <label class="layui-form-label" style="padding: 0;text-align: left;width:  45px;">头像 :</label>
+                    <div class="headImg-upload"></div>
+                </div>
+
+                <div class="layui-box layui-upload-button" style="margin: 10px 0 0 45px;">
+                    <form target="layui-upload-iframe" method="post" key="set-mine" enctype="multipart/form-data" action="">
+                        <input type="file" name="file" class="layui-upload-file">
+                    </form>
+                    <span class="layui-upload-icon"><i class="layui-icon"></i>上传图片</span>
+                </div>
+                <span style="display: inline-block;
+                            vertical-align: middle;
+                            padding-left: 10px;"
+                >图片小于1m（jpg,png）</span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="info-footer content-footer">
+    <div class="button-container">
+        <button class="layui-btn layui-btn-normal">保存</button>
+    </div>
+</div>
+</div>

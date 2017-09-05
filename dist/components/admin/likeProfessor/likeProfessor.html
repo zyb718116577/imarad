@@ -1,0 +1,100 @@
+<div class="animated fadeInRight attention-box">
+<div class="info-header content-header">
+    <p class="content-p">关注专家</p>
+</div>
+<div class="attention-main">
+    <div class="content-top">
+        <span class="layui-form">
+            <div class="form-item" style="width: 15%">
+                <select name="interest" lay-filter="aihao">
+                    <option value="0">类型</option>
+                    <option value="1">阅读</option>
+                </select>
+            </div>
+
+            <div class="form-item" style="width: 12%">
+            <label class="layui-form-label" style="float: right;">开播时间 :</label>
+            </div>
+            <div class="form-item" style="width: 15%">
+                <input class="layui-input" placeholder="点击选择" onclick="layui.laydate({elem: this, festival: true})">
+            </div>
+            <div class="form-item" style="width: 20px;text-align: center;line-height: 38px">
+            —
+            </div>
+            <div class="form-item" style="width: 15%">
+                <input class="layui-input" placeholder="点击选择" onclick="layui.laydate({elem: this, festival: true})">
+            </div>
+
+            <div class="form-item" style="width: 8%">
+                <label class="layui-form-label" style="float: right;">专家 :</label>
+            </div>
+            <div class="form-item" style="width: 15%;position: relative" >
+                <input type="text" name="title" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                <i class="layui-icon" style="position: absolute;top: 13px;right: 8px">&#xe615;</i>
+            </div>
+            <div class="form-item" style="width: 15%;text-align: center" >
+                <button class="layui-btn layui-btn-normal">查询</button>
+            </div>
+        </span>
+    </div>
+    <div class="layui-clear"></div>
+    <div class="attention-bottom">
+        <table class="layui-table" lay-even lay-skin="nob">
+            <colgroup>
+                <col width="200">
+                <col width="150">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>
+                    <span class="layui-form">
+                    <input class="chooseAll" type="checkbox" name="" title="全选" lay-filter="checkbox">
+                    </span>
+                    <button class="layui-btn layui-btn-primary default-like">取消关注</button>
+                </th>
+                <th style="text-align: center">专家</th>
+                <th style="text-align: center">所在医院/机构</th>
+                <th style="text-align: center">职称</th>
+                <th style="text-align: center">视频数量</th>
+                <th style="text-align: center">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span class="layui-form">
+                        <input class="checkbox" type="checkbox" choosed="false"  lay-skin="primary" lay-filter="checkbox1">
+                    </span>
+                    <div class="videoImg-small"></div>
+                </td>
+                <td>陈某某</td>
+                <td>重庆医科大学</td>
+                <td>教授</td>
+                <td>15</td>
+                <td>
+                    <i class="icon iconfont icon-xihuan" style="font-size: 20px;cursor: pointer"></i>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="layui-form">
+                        <input class="checkbox"  type="checkbox" choosed="false"  lay-skin="primary" lay-filter="checkbox1">
+                    </span>
+                    <div class="videoImg-small"></div>
+                </td>
+                <td>陈某某</td>
+                <td>重庆医科大学</td>
+                <td>教授</td>
+                <td>15</td>
+                <td>
+                    <i class="icon iconfont icon-xihuan" style="font-size: 20px;cursor: pointer"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div id="page"></div>
+        <div class="layui-clear"></div>
+    </div>
+</div>
+</div>

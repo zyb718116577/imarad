@@ -1,0 +1,83 @@
+<div class="createMeeting-box animated fadeInRight">
+    <div class="info-header content-header">
+        <p class="content-p">创建会议</p>
+    </div>
+    <div class="content-main step-body myStep">
+        <div class="step-header" style="height: 0;overflow: hidden">
+            <ul>
+                <li><p>绑定邮箱</p></li>
+                <li><p>绑定成功</p></li>
+            </ul>
+        </div>
+        <div class="step-content">
+            <div class="step-list">
+                <!--左边表格-->
+                <div class="left">
+                    <div class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">会议主题 <span style="color: red">*</span></label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" required  lay-verify="required" placeholder="请输入会议主题" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">会议简介 <span style="color: red">*</span></label>
+                            <div class="layui-input-block">
+                                <textarea name="desc" placeholder="100字以内" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">开播时间 <span style="color: red">*</span></label>
+                            <div class="layui-input-block" style="margin-right: 0">
+                                <input class="layui-input" style="width: 35%;display: inline-block" placeholder="点击选择开始时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"> ——
+                                <input class="layui-input" style="width: 35%;display: inline-block" placeholder="点击选择结束时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">会议组Logo</label>
+                            <div class="layui-input-block">
+                                <input type="file" name="file" class="layui-upload-file"><span style="margin-left: 10px">图片小于1M（jpg,png）</span>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">背景页</label>
+                            <div class="layui-input-block">
+                                <input type="file" name="file" class="layui-upload-file"><span style="margin-left: 10px">图片小于1M（jpg,png）</span>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">海报</label>
+                            <div class="layui-input-block">
+                                <div class="poster">海报</div>
+                                <input type="file" name="file" class="layui-upload-file"><span style="margin-left: 10px">图片小于1M（jpg,png）</span>
+                            </div>
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-btn-primary usually-poster">通用海报</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--右边预览-->
+                <div class ="right">
+                    <div class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">预览 </label>
+                            <div class="layui-input-block">
+                                <div class="preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-list">
+                第二步
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <div class="bottom">
+        <button class="layui-btn nextBtn">下一步</button>
+        <button class="layui-btn defaultBtn">取消</button>
+    </div>
+</div>

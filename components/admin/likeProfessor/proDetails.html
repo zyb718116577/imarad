@@ -1,0 +1,64 @@
+<div class="animated fadeInRight attention-box">
+    <div class="info-header content-header">
+        <p class="content-p">关注专家 <span style="color: #000">>>更多详情</span></p>
+    </div>
+    <div class="attention-main" style="padding-bottom: 50px"></div>
+    <!--专家信息模板-->
+    <script id="proDetailTemp" type="text/html">
+        <div class="pro-head">
+            {{# if(d.imaradUserInfoEntity.headPicPath){}}
+            <img src="{{d.SERVER_URL}}{{d.imaradUserInfoEntity.headPicPath||''}}" alt="" style="width: 100%;height: 100%;border-radius: 100%">
+            {{# }else{ }}
+            <img src="./img/ardLive1.png" alt="" style="width: 100%;height: 100%;border-radius: 100%">
+            {{# } }}
+        </div>
+        <div class="head-right">
+            <p class="pro-name">{{d.imaradUserInfoEntity.userName||''}}</p>
+            <p>{{d.imaradUserInfoEntity.userPlaceExtend||''}}({{util.userTitle(d.imaradUserInfoEntity.userTitle)||'暂无职称信息'}})</p>
+            <p style="display: inline-block;vertical-align: top">简介：</p>
+            <p style="display: inline-block;width: 75%;">{{d.imaradUserInfoEntity.userDesc||''}}</p>
+        </div>
+        <div>
+            <button class="layui-btn layui-btn-normal no-like">{{d.attentionFlag=='1'?'取消关注':'添加关注'}}</button>
+        </div>
+    </script>
+
+</div>
+
+<div class="animated fadeInRight attention-box" style="margin: 20px 0">
+    <div class="info-header content-header" style="">
+        <p class="content-p" style="display: inline-block">关注专家 <span
+                style="color: #000;font-family: Arial">>>他的视频<span id="video-number"></span></span></p>
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin-right: 30px">
+            <ul class="layui-tab-title">
+                <li class="layui-this">所有视频</li>
+                <!--<li>动态</li>-->
+            </ul>
+        </div>
+    </div>
+    <!--所有视频容器-->
+    <div class="tab-content"></div>
+    <div id="page" class="page" style=""></div>
+    <div class="layui-clear"></div>
+</div>
+
+<!--专家所有视频模板-->
+<script id="allvideo-temp" type="text/html">
+    <div class="tab-item">
+        {{#  layui.each(d.expertVideoList, function(index, item){ }}
+        <div class="layui-tab-card detail-card" live_id="{{item.videoId}}" onclick="window.location.href = util.constants.WEB_EXPERT_URL+{{item.videoId}}">
+            <div class="img">
+                <div class="video-img"><img src="./img/default-video.jpg" style="width: 100%;height: 100%" alt=""></div>
+                <span class="replay tip"> {{item.videoType == '0'?'直播':(item.videoType == '1'?'预告':'回放')}} </span>
+            </div>
+            <div class="video-title">
+                视频名称 : <span>{{item.videoTitle||''}}</span>
+            </div>
+            <div>
+                <div class="card-bar1"><i class="icon iconfont icon-chakantiezishipin"></i>&nbsp;{{item.totlePlay||'暂无信息'}}</div>
+                <span class="card-bar2"><i class="layui-icon">&#xe637;</i>&nbsp;{{util.pastHowLong(item.gmtCreate)}}</span>
+            </div>
+        </div>
+        {{# }); }}
+    </div>
+</script>

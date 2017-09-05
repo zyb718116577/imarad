@@ -1,0 +1,432 @@
+.home-main {
+    width: 100%;
+    margin: 0 auto;
+    min-width: 1000px;
+}
+
+/*轮播部分*/
+.home-top-carousel {
+    height: 600px;
+    width: 100%;
+    position: relative;
+}
+
+.home-top-carousel-text-contanier {
+    width: 100%;
+    position: absolute;
+    top: 400px;
+    z-index: 999;
+}
+
+.home-top-carousel-text {
+    width: 408px;
+    margin: 0 auto;
+}
+
+.home-top-carousel-text a {
+    display: inline-block;
+    float: left;
+    margin: 0 25px;
+    width: 150px;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    border: 2px solid white;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.home-top-carousel-text .home-top-carousel-text-active {
+    background: white;
+    color: black;
+}
+
+/*轮播插件部分*/
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.arrow-left {
+    display: inline-block;
+    width: 30px;
+    height: 57px;
+    position: absolute;
+    top: 271px;
+    left: 140px;
+    z-index: 999;
+    background: url("../../../img/home21.png");
+}
+
+.arrow-right {
+    display: inline-block;
+    width: 30px;
+    height: 57px;
+    position: absolute;
+    top: 271px;
+    right: 140px;
+    z-index: 999;
+    background: url("../../../img/home22.png");
+}
+
+/*直播服务部分*/
+.live-service {
+    width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+.live-service-why {
+    width: 570px;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    line-height: 40px;
+}
+
+.live-service-reson {
+    margin: 0 auto;
+    width: 870px;
+    text-align: center;
+    color: #666666;
+    line-height: 26px;
+    font-size: 16px;
+}
+
+.live-service-infor-box {
+    width: 1000px;
+    height: 260px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.live-service-infor {
+    width: 260px;
+    height: 260px;
+    text-align: center;
+    color: white;
+}
+
+.live-service-infor1 {
+    background: #69737f;
+    float: left;
+}
+
+.live-service-infor2 {
+    background: #576183;
+    float: left;
+    margin-left: 110px;
+}
+
+.live-service-infor3 {
+    background: #9cb9cb;
+    float: right;
+}
+
+.live-service-p1 {
+    padding: 0;
+    margin: 0;
+    margin-top: 80px;
+    font-size: 16px;
+}
+
+.live-service-p2 {
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.live-service-bottom {
+    width: 1000px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.live-service-describe {
+    width: 460px;
+    float: left;
+    margin-right: 40px;
+}
+
+.live-service-describe1 {
+    font-size: 30px;
+    margin-bottom: 55px;
+}
+
+.live-service-describe2 {
+    color: #666666;
+    line-height: 26px;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.live-service-describe3 {
+    color: #666666;
+    line-height: 26px;
+    font-size: 16px;
+    position: relative;
+}
+
+.live-service-describe3 a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 3px;
+}
+
+.live-service-describe3 a img {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+}
+
+.live-service-describe3 span {
+    padding-left: 30px;
+}
+
+.live-service-describe-more {
+    display: inline-block;
+    width: 178px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 2px;
+    border: 2px solid #0673b8;
+    color: #0673b8;
+}
+.live-service-describe-more:hover{
+    color: white;
+    background: #0673b8;
+}
+.live-service-img {
+    float: left;
+    margin-top: 30px;
+}
+
+.live-service-img-box {
+    width: 500px;
+    height: 380px;
+    position: relative;
+}
+
+/*中间轮播部分*/
+.center-carousel {
+    width: 100%;
+    /*background: blue;*/
+    height: 540px;
+    position: relative;
+}
+
+.center-carousel-text-box {
+    width: 1000px;
+    margin: 0 auto;
+    color: white;
+}
+
+.center-carousel-text {
+    width: 450px;
+}
+
+.center-carousel-p1 {
+    font-size: 30px;
+    padding-top: 70px;
+    margin-bottom: 55px;
+}
+
+.center-carousel-p2 {
+    padding-bottom: 10px;
+}
+
+.center-carousel-p3 {
+    padding-bottom: 40px;
+}
+
+.center-carousel-p4 {
+    line-height: 26px;
+}
+
+.center-carousel-text-box a {
+    display: inline-block;
+    width: 178px;
+    height: 32px;
+    line-height: 32px;
+    color: white;
+    border: 2px solid white;
+    text-align: center;
+    margin-top: 80px;
+    border-radius: 4px;
+}
+
+.center-carousel-type-box {
+    width: 100%;
+    height: 200px;
+    background: #f2f2f2;
+}
+
+.center-carousel-type {
+    width: 1000px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.carousel-type {
+    width: 250px;
+    height: 200px;
+    float: left;
+}
+
+.carousel-type-action {
+    background: #e3e4e4;
+}
+
+.carousel-type-img {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 60px;
+
+}
+
+.carousel-type-img img {
+
+}
+
+/*轮播插件*/
+.pagination1 {
+    position: absolute;
+    z-index: 20;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.swiper-pagination-switch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #555;
+    margin: 0 5px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.swiper-active-switch {
+    background: #fff;
+}
+.pagination2 {
+    width: 100%;
+    text-align: center;
+}
+.pagination2 .swiper-pagination-switch {
+    display: inline-block;
+    width: 250px;
+    height: 200px;
+    margin: 0 5px;
+    opacity: 0.8;
+    cursor: pointer;
+    border-radius: 0;
+    margin: 0;
+    background: #f2f2f2;
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+.pagination2 .swiper-active-switch{
+    background: gainsboro;
+}
+.arrow-left2{
+    top: 240px;
+}
+.arrow-right2{
+    top: 240px;
+}
+
+/*在线课堂*/
+.online-classroom-box {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.online-classroom-p1 {
+    font-size: 30px;
+    padding-top: 70px;
+    margin-bottom: 60px;
+}
+
+.online-classroom {
+    float: left;
+    margin-bottom: 55px;
+}
+
+.online-classroom1 {
+    float: right;
+    margin-bottom: 55px;
+}
+
+.online-classroom-img {
+    width: 70px;
+    height: 70px;
+    float: left;
+    margin-top: 5px;
+}
+
+.online-classroom p {
+    width: 280px;
+    float: left;
+    margin-left: 55px;
+    line-height: 26px;
+    color: #666666;
+}
+
+.online-classroom1 p {
+    width: 280px;
+    float: left;
+    margin-left: 55px;
+    line-height: 26px;
+    color: #666666;
+}
+
+.online-classroom-box a {
+    display: inline-block;
+    width: 178px;
+    height: 32px;
+    line-height: 32px;
+    color: #0774b9;
+    text-align: center;
+    border-radius: 2px;
+    border: 2px solid #0774b9;
+}
+
+/*底部轮播*/
+.footer-carousel {
+    width: 100%;
+    background: white;
+}
+
+.footer-carousel-top {
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 30px;
+    padding-top: 80px;
+}
+
+.footer-carousel-all {
+    width: 100%;
+    height: 330px;
+    background: blueviolet;
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+

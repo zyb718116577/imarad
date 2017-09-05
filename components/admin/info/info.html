@@ -1,0 +1,241 @@
+<div class="info-box animated fadeInRight">
+<div class="info-header content-header">
+    <p class="content-p">个人信息</p>
+</div>
+    <div class="layui-clear"></div>
+<div class="content-main">
+
+    <!--编辑时候-->
+    <script id="infoBox" type="text/html">
+    <div class="main-left">
+        <form class="layui-form" id="form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称 :</label>
+                <div class="layui-input-block">
+                    <input type="text" name="userName" value="{{ d.userName||'' }}"  lay-verify="required|username" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别 :</label>
+                <div class="layui-input-block">
+                    {{#  if(d.userSex == '1'){ }}
+                    <input type="radio" name="userSex" value="1" title="男" checked>
+                    <input type="radio" name="userSex" value="0" title="女" >
+                    {{#  }else{ }}
+                    <input type="radio" name="userSex" value="1" title="男" >
+                    <input type="radio" name="userSex" value="0" title="女" checked>
+                    {{#  } }}
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">出生日期 :</label>
+                <div class="layui-input-block" style="margin-right: 0">
+                    {{# if (d.birthDate){ }}
+                    <input name="birthDate" value="{{ util.timeFomat(d.birthDate) }}" class="layui-input" lay-verify="shouldEarly" placeholder="点击选择" onclick="layui.laydate({elem: this, festival: true})">
+                    {{# }else{ }}
+                    <input name="birthDate" value="" class="layui-input" lay-verify="shouldEarly" placeholder="点击选择" onclick="layui.laydate({elem: this, festival: true})">
+                    {{# } }}
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">所在地 :</label>
+                <div class="layui-input-block">
+                    <select id="selProvince" lay-filter="pro" name="provence">
+                        <option value="0" class="no-del">请选择省份</option>
+                    </select>
+                    <div style="height: 10px"></div>
+                    <select id="selCity" lay-filter="city" name="city">
+                        <option value="0" class="no-del">请选择城市</option>
+                    </select>
+                    <div style="height: 10px"></div>
+                    <select id="selDistrict" lay-filter="dis" name="county">
+                        <option value="0" class="no-del">请选择区/县</option>
+                    </select>
+                </div>
+            </div>
+            {{# if(d.userType=='2'){ }}
+            <div class="layui-form-item">
+                <label class="layui-form-label">所属医院 :</label>
+                <div class="layui-input-block">
+                    <input type="text" name="userPlaceExtend" value="{{ d.userPlaceExtend||'' }}"  lay-verify="" placeholder="请输入医院" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            {{# } }}
+            <div class="layui-form-item" style="display: none">
+                <div class="layui-input-block">
+                    <button class="layui-btn hide-btn" lay-submit lay-filter="info">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="main-right">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <div style="overflow: hidden">
+                    <label class="layui-form-label" style="padding: 0;text-align: left;width:  45px;">头像 :</label>
+                    <div class="headImg-upload" id="preview">
+                        <img  width="150" height="150" class="headimg-backshow" src="{{d.SERVER_URL}}{{ d.headPicPath }}">
+                        <input id="hideUrl" type="hidden" value="{{ d.headPicPath }}">
+                    </div>
+                </div>
+                <div style="margin: 10px 0 0 45px;display: inline-block">
+                    <div class="layui-box layui-upload-button">
+                        <span type="file" class="layui-upload-icon" id="filePicker">上传图片</span>
+                    </div>
+                </div>
+
+                <div style="display: inline-block;vertical-align: middle;padding-left: 10px;">图片小于512kb（jpg,png,jpeg）</div>
+            </div>
+            {{# if(d.userType=='2'){ }}
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="padding:9px 0;text-align: left;width: 45px;">职称 :</label>
+                <div class="layui-input-block" style="margin: 0 31px 0 45px">
+                    <select name="userTitle" lay-filter="aihao">
+                        <option value=""></option>
+                        {{# if(d.userTitle=='1'){ }}
+                        <option value="1" selected="selected">主治医师</option>
+                        <option value="2">主任医师</option>
+                        <option value="3">副主任医师</option>
+                        <option value="4">住院医师</option>
+                        {{# }else if (d.userTitle=='2'){ }}
+                        <option value="1">主治医师</option>
+                        <option value="2" selected="selected">主任医师</option>
+                        <option value="3">副主任医师</option>
+                        <option value="4">住院医师</option>
+                        {{# }else if (d.userTitle=='3'){ }}
+                        <option value="1">主治医师</option>
+                        <option value="2">主任医师</option>
+                        <option value="3" selected="selected">副主任医师</option>
+                        <option value="4">住院医师</option>
+                        {{# }else if (d.userTitle=='4'){ }}
+                        <option value="1">主治医师</option>
+                        <option value="2">主任医师</option>
+                        <option value="3">副主任医师</option>
+                        <option value="4" selected="selected">住院医师</option>
+                        {{# }else{ }}
+                        <option value="1">主治医师</option>
+                        <option value="2">主任医师</option>
+                        <option value="3">副主任医师</option>
+                        <option value="4">住院医师</option>
+                        {{# } }}
+                    </select>
+                    <!--<input type="text" name="userTitle" value="{{ d.userTitle||'' }}"  lay-verify="" placeholder="请输入职称" autocomplete="off" class="layui-input">-->
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="padding:9px 0;text-align: left;width: 45px;">简介 :</label>
+                <div class="layui-input-block" style="margin:0 31px 0 45px">
+                    <textarea placeholder="请输入简介" name="userDesc" class="layui-textarea" maxlength="500">{{d.userDesc||''}}</textarea>
+                </div>
+            </div>
+            {{# } }}
+        </form>
+    </div>
+    <div class="layui-clear"></div>
+    </script>
+
+    <!--新增时候-->
+    <script id="infoErrorBox" type="text/html">
+        <div class="main-left">
+            <form class="layui-form" id="form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">昵称 :</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="userName" value=""  lay-verify="required|username" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别 :</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="userSex" value="1" title="男" >
+                        <input type="radio" name="userSex" value="0" title="女" checked>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出生日期 :</label>
+                    <div class="layui-input-block" style="margin-right: 0">
+                        <input name="birthDate" value="" class="layui-input" lay-verify="shouldLate" placeholder="点击选择" onclick="layui.laydate({elem: this, festival: true})">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所在地 :</label>
+                    <div class="layui-input-block">
+                        <select id="selProvince" lay-filter="pro" name="provence">
+                            <option value="0">请选择省份</option>
+                        </select>
+                        <div style="height: 10px"></div>
+                        <select id="selCity" lay-filter="city" name="city">
+                            <option value="0">请选择城市</option>
+                        </select>
+                        <div style="height: 10px"></div>
+                        <select id="selDistrict" lay-filter="dis" name="county">
+                            <option value="0">请选择区/县</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属医院 :</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="userPlaceExtend" value="{{ d.userPlaceExtend||'' }}"  lay-verify="" placeholder="请输入医院" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="display: none">
+                    <div class="layui-input-block">
+                        <button class="layui-btn hide-btn" lay-submit lay-filter="info">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="main-right">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <div style="overflow: hidden">
+                        <label class="layui-form-label" style="padding: 0;text-align: left;width:  45px;">头像 :</label>
+                        <div class="headImg-upload" id="preview">
+                            <img  width="150" height="150" class="headimg-backshow" src="{{ d.headPicPath }}">
+                        </div>
+                    </div>
+                    <div style="margin: 10px 0 0 45px;display: inline-block">
+                        <div class="layui-box layui-upload-button">
+                            <div>
+                                <div id="uploader-demo">
+                                    <!--用来存放item-->
+                                    <div id="fileList" class="uploader-list"></div>
+                                    <!--<div id="filePicker">选择图片</div>-->
+                                </div>
+                            </div>
+                            <span type="file" class="layui-upload-icon" id="filePicker">上传图片</span>
+                        </div>
+                    </div>
+
+                    <div style="display: inline-block;vertical-align: middle;padding-left: 10px;">图片小于512kb（jpg,png,jpeg）</div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="padding:9px 0;text-align: left;width: 45px;">职称 :</label>
+                    <div class="layui-input-block" style="margin: 0 31px 0 45px">
+                        <select name="userTitle" lay-filter="aihao">
+                            <option value=""></option>
+                            <option value="1">主治医师</option>
+                            <option value="2">主任医师</option>
+                            <option value="3">副主任医师</option>
+                            <option value="4">住院医师</option>
+                        </select>
+                        <!--<input type="text" name="userTitle" value="{{ d.userTitle||'' }}"  lay-verify="" placeholder="请输入职称" autocomplete="off" -->class="layui-input">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="layui-clear"></div>
+    </script>
+
+
+</div>
+<div class="info-footer content-footer">
+    <div class="button-container">
+        <button class="layui-btn layui-btn-normal saveInfo" lay-filter="demo1">保存</button>
+    </div>
+</div>
+</div>
+

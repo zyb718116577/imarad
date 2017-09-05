@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="../../../static/css/normalize.min.css">
+    <link rel="stylesheet" href="login.css"/>
+</head>
+<body>
+<div class="bubble"></div>
+<div class="header" style="position: absolute;z-index: 999">
+    <div class="header-left">
+        <a href="../../../index.html"><img src="../../../img/login1.png" style="margin-top: 10px"></a>
+    </div>
+    <div class="header-right"><a href="./../register/register.html" style="text-decoration: none;color: white">没有账号？去注册</a></div>
+</div>
+<div class="sign-main">
+    <!--账号登录-->
+    <div class="account-login">
+        <div class="sign-box">
+            <ul class="sign">
+                <li class="sign3" id="sign3">手机登录</li>
+                <li class="sign1 sign-active">账号登录</li>
+            </ul>
+            <div style="clear: both"></div>
+            <div action="" class="sign-info">
+                <div class="account">
+                    <form action="#" autocomplete="off">
+                        <div class="sign-input">
+                            <input type="text" placeholder="账号" class="input-input" id="accountNumber">
+                            <img src="../../../img/error.png" class="error">
+                        </div>
+                        <div class="sign-input">
+                            <input type="password" placeholder="密码" class="input-input" id="accountPassword">
+                            <img src="../../../img/error.png" class="error">
+                        </div>
+                        <div class="sign-input sign-checkbox">
+                            <!--<input type="checkbox" id="checkbox">
+                            <label for="checkbox">自动登录</label>-->
+                            <a href="../forgotPassword/forgotPassword.html" style="text-decoration: none">忘记密码？</a>
+                        </div>
+                        <input type="button" value="登  录" class="submit-submit" style="margin-top: 8px" id="accountSubmit" onclick="return false">
+                        <input type="reset" value="重置" style="display: none" id="resetFirst">
+                    </form>
+                </div>
+                <div class="tel">
+                    <form action="#" autocomplete="off">
+                        <div class="sign-input">
+                            <input type="text" placeholder="请输入手机号" class="input-input" id="iphoneNumber">
+                            <img src="../../../img/error.png" class="error">
+                        </div>
+                        <div class="drag">
+                            <div class="disgraceful"></div>
+                            <div class="bg"></div>
+                            <p class="text">拖动滑块验证</p>
+                            <div class="btn"></div>
+                        </div>
+                        <div class="sign-input">
+                            <input type="text" placeholder="动态密码" class="input-input" id="iphonePassword">
+                            <img src="../../../img/error.png" class="error" style="right: 135px">
+                            <button class="img-verification" style="background: #b9d4e6;border: none;" disabled="disabled">获取验证码</button>
+                        </div>
+                        <input type="button" value="登  录" class="submit-submit" style="margin-top: 25px" id="iphoneSubmit" onclick="return false">
+                        <input type="reset" value="重置" style="display: none" id="resetTwo">
+                    </form>
+                </div>
+            </div>
+            <div class="sign-hr"></div>
+            <div class="other-sign">
+                <div class="other-sign-left">第三方登录：</div>
+                <ul class="other-sign-center">
+                    <li><img src="../../../img/login2.png"></li>
+                    <li><img src="../../../img/login3.png"></li>
+                    <li><img src="../../../img/login4.png"></li>
+                </ul>
+                <div class="other-sign-right"><a href="./../register/register.html">注册账号</a></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--底部-->
+    <div class="so-specialist-footer">
+        <ul class="so-specialist-footer1">
+            <li>关于我们</li>
+            <li>|</li>
+            <li>合作伙伴</li>
+            <li>|</li>
+            <li>加入安锐达</li>
+            <li>|</li>
+            <li>平台介绍</li>
+            <li>|</li>
+            <li>服务条款</li>
+            <li>|</li>
+            <li>常见问题</li>
+        </ul>
+        <div style="clear: both"></div>
+        <div class="so-specialist-footer2">版权所有©2015 重庆安碧捷科技股份有限公司 渝ICP备12007374号|渝公网备：50010902000052</div>
+    </div>
+</div>
+<script src="../../../lib/jquery.js"></script>
+<script src="../../../lib/jquery.cookie.js"></script>
+<script src="../../../static/layui/layui.js"></script>
+<script src="../../../static/js/util.other.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

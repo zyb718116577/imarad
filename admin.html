@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" content="安锐达直播平台后台管理系统">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>安锐达直播平台后台管理</title>
+    <link rel="shortcut icon" href="./img/ico/imarad_favicon.ico"/>
+    <link rel="stylesheet" href="admin.css">
+    <!--[if IE]>
+    <script src="static/plugin/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div>
+    <!--head start-->
+    <div class="header">
+        <div class="header-inner min-width">
+            <div class="header-logo"></div>
+            <div class="header-handle">
+                <a class="to-guanwang" href="./index.html">
+                    <i class="icon iconfont icon-guanwang" style="font-size: 15px"></i>
+                    返回官网
+                </a>
+                <a href="javascript:void(0)" id="logout">
+                    <i class="icon iconfont icon-tuichudenglu"></i>
+                    退出登录
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--head end-->
+    <!--左侧菜单 start-->
+    <div class="layui-side layui-bg-black left-menu" id="admin-side" style="width: 250px;position: fixed">
+        <div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side" style="width: 100%">
+        </div>
+    </div>
+    <!--左侧菜单 end-->
+
+    <!--菜单模板-->
+    <script id="menuBox" type="text/html">
+        <div class="user-headimg-contenner">
+            <div class="user-headimg">
+                <img src="{{d.SERVER_URL}}{{d.headPicPath}}" alt="" style="width: 100%;height: 100%;border-radius: 100%">
+            </div>
+        </div>
+        {{#  if(d.user_type == '1'){ }}
+        <p class="user-name" style="word-break: break-all">{{d.userName||''}}</p>
+        {{# } }}
+        {{#  if(d.user_type == '2'){ }}
+        <p class="user-name" style="word-break: break-all">{{d.userName}}<span class="user-title-hide">({{util.userTitle(d.userTitle)||'暂无职称信息'}})</span></p>
+        <p class="user-name user-place" style="word-break: break-all">{{d.userPlaceExtend||'暂无医院信息'}}</p>
+        {{# } }}
+        {{#  if(d.user_type == '3'){ }}
+        <p class="user-name" style="word-break: break-all">{{d.userName||''}}</p>
+        {{# } }}
+        {{#  if(d.user_type != '3'){ }}
+        <div class="user-tool">
+            <span><i class="icon iconfont icon-weixin"></i></span>
+            <span><i class="icon iconfont icon-iconfontweibowukuang"></i></span>
+            <span><i class="icon iconfont icon-qq"></i> </span>
+        </div>
+        {{# } }}
+        {{#  if(d.user_type == '3'){ }}
+        <div class="jiangeDiv" style="border-bottom: 1px solid #35393c;margin: 20px 12px 0 12px"></div>
+        {{# } }}
+        {{#  if(d.user_type == '1'||d.user_type == '2'){ }}
+        <div class="jiangeDiv" style="border-bottom: 1px solid #35393c;margin: 0 12px"></div>
+        {{# } }}
+        <div class="menu">
+
+            <ul>
+                <!--观众入口菜单-->
+                {{#  if(d.user_type == '1'){ }}
+                <li class="no-border-top">
+                    <a href="#likeProfessor" id="likeProfessor">
+                        <i class="icon iconfont icon-iconyonghu"></i>
+                        <span class="li-item">关注专家
+                        <i class="layui-icon">&#xe602;</i></span>
+                    </a>
+                    <p class="shadow-menu-title">关注专家</p>
+                </li>
+                <li>
+                    <a href="#likeMeeting" id="likeMeeting">
+                        <i class="icon iconfont icon-xiaoxixuanzhong01"></i>
+                        <span class="li-item">关注会议
+                        <i class="layui-icon">&#xe602;</i></span>
+                    </a>
+                    <p class="shadow-menu-title">关注会议</p>
+                </li>
+                {{# } }}
+
+                <!--专家会议入口-->
+                {{#  if(d.user_type == '2' || d.user_type == '3' ){ }}
+                <li  class="no-border-top">
+                    <a href="#createMeeting" id="createMeeting">
+                        <i class="icon iconfont icon-xiaoxixuanzhong01"></i>
+                            <span class="li-item">创建{{d.type_name}}
+                            <i class="layui-icon">&#xe602;</i></span>
+                    </a>
+                    <p class="shadow-menu-title">创建{{d.type_name}}</p>
+                </li>
+                <li>
+                    <a href="#meetingList" id="manageMeeting">
+                        <i class="layui-icon icon" style="margin-left: 0">&#xe614;</i>
+                            <span class="li-item">{{d.type_name}}管理
+                            <i class="layui-icon">&#xe602;</i></span>
+                    </a>
+                    <p class="shadow-menu-title">{{d.type_name}}管理</p>
+                </li>
+                <li>
+                    <a href="#historyMeeting" id="historyMeeting">
+                        <i class="icon iconfont icon-lishi"></i>
+                            <span class="li-item">历史{{d.type_name}}
+                            <i class="layui-icon">&#xe602;</i></span>
+                    </a>
+                    <p class="shadow-menu-title">历史{{d.type_name}}</p>
+                </li>
+                {{# } }}
+
+                {{#  if(d.user_type == '1' || d.user_type == '2' ){ }}
+                <li>
+                    <a href="#info" id="info">
+                        <i class="icon iconfont icon-gerenxinxi"></i>
+                            <span class="li-item">个人信息
+                            <i class="layui-icon">&#xe602;</i></span>
+                    </a>
+                    <p class="shadow-menu-title">个人信息</p>
+                </li>
+                {{# } }}
+                <li class="no-border-bottom">
+                    <a href="#safety" id="safety">
+                        <i class="icon iconfont icon-zhanghuanquan"></i>
+                            <span class="li-item">账户安全
+                            <i class="layui-icon">&#xe602;</i></span>
+                    </a>
+                    <p class="shadow-menu-title">账户安全</p>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </script>
+
+</div>
+<!--主视图 start-->
+<div class='view-window' id="view-window">
+    <!--各个模块加载的地方-->
+</div>
+<!--主视图 end-->
+<script>
+    window._console = window.console;//将原始console对象缓存
+    window.console = (function (orgConsole) {
+        return {//构造的新console对象
+            log: getConsoleFn("log"),
+            debug: getConsoleFn("debug"),
+            info: getConsoleFn("info"),
+            warn: getConsoleFn("warn"),
+            exception: getConsoleFn("exception"),
+            assert: getConsoleFn("assert"),
+            dir: getConsoleFn("dir"),
+            dirxml: getConsoleFn("dirxml"),
+            trace: getConsoleFn("trace"),
+            group: getConsoleFn("group"),
+            groupCollapsed: getConsoleFn("groupCollapsed"),
+            groupEnd: getConsoleFn("groupEnd"),
+            profile: getConsoleFn("profile"),
+            profileEnd: getConsoleFn("profileEnd"),
+            count: getConsoleFn("count"),
+            clear: getConsoleFn("clear"),
+            time: getConsoleFn("time"),
+            timeEnd: getConsoleFn("timeEnd"),
+            timeStamp: getConsoleFn("timeStamp"),
+            table: getConsoleFn("table"),
+            error: getConsoleFn("error"),
+            memory: getConsoleFn("memory"),
+            markTimeline: getConsoleFn("markTimeline"),
+            timeline: getConsoleFn("timeline"),
+            timelineEnd: getConsoleFn("timelineEnd")
+        };
+        function getConsoleFn(name) {
+            return function actionConsole() {
+                if (typeof (orgConsole) !== "object") return;
+                if (typeof (orgConsole[name]) !== "function") return;//判断原始console对象中是否含有此方法，若没有则直接返回
+                return orgConsole[name].apply(orgConsole, Array.prototype.slice.call(arguments));//调用原始函数
+            };
+        }
+    }(window._console));
+</script>
+<script src="lib/jquery.js"></script>
+<script src="static/dist/webuploader.nolog.min.js"></script>
+<script src="./lib/require.js" data-main="app.js?v=1.01"></script>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+define(["text!./safetyChange.html","$css!./safety.css"],function(e){function t(){$(".view-window").html(e),$(function(){$(".myStep").each(function(e,t){var n=$(t).step();$(".nextBtn").eq(e).click(function(e){n.nextStep()})})})}function n(){window.onbeforeunload=function(){return"将丢失未保存的数据!"}}return{render:t}});

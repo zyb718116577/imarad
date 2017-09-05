@@ -1,0 +1,153 @@
+<div class="manMeeting-box animated fadeInRight">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <!--头部tab菜单-->
+        <ul class="layui-tab-title tab" style="padding-bottom: 0">
+            <li class="layui-this"><span class="replace"></span>管理</li>
+            <li><span class="replace"></span>统计</li>
+        </ul>
+        <div style="background: #e6eaed;width: 100%;height: 20px"></div>
+        <!--tab子菜单-->
+        <div class="layui-tab-content tab-containner">
+            <!--会议管理-->
+            <div class="layui-tab-item layui-show">
+                <!--会议管理-->
+                <div class="man-left">
+                    <div class="man-video" style="position: relative">
+                        <img id="post-img" src="" alt="" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 1000;display: none">
+                        <div class="video">
+                            <div id='playwrap'>
+                                <div id='player'></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-tool layui-tab-card">
+                        <button class="layui-btn change-status-btn" data-liveid="4" data-status="1">开始<span class="replace"></span></button>
+                        <button class="layui-btn change-status-btn" data-liveid="4" data-status="2">暂停<span class="replace"></span></button>
+                        <button class="layui-btn change-status-btn" data-liveid="4" data-status="-1">结束<span class="replace"></span></button>
+                    </div>
+                    <div class="meeting-have" style="min-height: 50px"></div>
+                    <script type="text/html" id="list-temp">
+                        <!--会议-->
+                        {{# if(d.user_type=='3'){ }}
+                            {{# if (d.imaradLiveDetailEntity){ }}
+                            <p style="word-break: break-all">演讲主题 : {{d.imaradLiveDetailEntity.liveTitle||''}}<button class="edit-btn">修改</button></p>
+                            <p style="word-break: break-all">演讲人 : {{d.imaradLiveDetailEntity.speakerName||''}}&nbsp;&nbsp;&nbsp;头衔 : {{d.imaradLiveDetailEntity.speakerTitle||''}}&nbsp;&nbsp;&nbsp;</p>
+                            <p style="word-break: break-all"><span class="span1">演讲简介 :</span> <span class="descibes">{{d.imaradLiveDetailEntity.detailDesc||''}}</span></p>
+                            {{# } }}
+                            <p>观看地址 : <input type="text" class="layui-input" disabled="disabled" value="{{d.watchUrl||''}}"><button class="layui-btn layui-btn-small layui-btn-primary copy-btn">复制</button></p>
+                            <p>推流地址 : <input type="text" class="layui-input" disabled="disabled" value="{{d.cdnUrl||''}}"><button class="layui-btn layui-btn-small layui-btn-primary copy-btn">复制</button></p>
+                        {{# } }}
+                        <!--专家-->
+                        {{# if(d.user_type=='2'){ }}
+                        <p style="margin-top: 70px">观看地址 : <input type="text" class="layui-input" disabled="disabled" value="{{d.watchUrl||''}}"><button class="layui-btn layui-btn-small layui-btn-primary copy-btn">复制</button></p>
+                        <p>推流地址 : <input type="text" class="layui-input" disabled="disabled" value="{{d.cdnUrl||''}}"><button class="layui-btn layui-btn-small layui-btn-primary copy-btn">复制</button></p>
+                        {{# } }}
+                    </script>
+                </div>
+                <!--聊天室-->
+                <div class="man-right">
+                    <div class="layui-tab-card">
+                        <!--<div class="chat-title">
+                            聊天室
+                            <button class="layui-btn">关闭聊天功能</button>
+                        </div>-->
+                        <div class="chat-main">
+                            <div id='chatwrap' style="height: 100%">
+                                <div id='chat'></div>
+                            </div>
+                        </div>
+                        <!--<div class="chat-tool">
+                            <input type="text" class="layui-input chat-input">
+                            <button class="layui-btn">发送</button>
+                        </div>-->
+                    </div>
+                </div>
+
+            </div>
+
+            <!--统计-->
+            <div class="layui-tab-item">
+                <div class="layui-form">
+                <div class="layui-form-item" style="display: inline-block;width: 35%">
+                    <label class="layui-form-label">开始时间 </label>
+                    <div class="layui-input-block" style="margin-right: 0">
+                        <input class="layui-input shouldEarly" lay-verify="required" name="liveStartTime" style="display: inline-block" placeholder="点击选择开始时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="display: inline-block;width: 35%">
+                    <label class="layui-form-label">结束时间 </label>
+                    <div class="layui-input-block" style="margin-right: 0">
+                        <input class="layui-input" lay-verify="required" name="liveEndTime" style="display: inline-block" placeholder="点击选择开始时间" onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="display: inline-block;margin-left: 25px">
+                    <button lay-submit="" lay-filter="formDemo" class="layui-btn layui-btn-primary">查询</button>
+                </div>
+                </div>
+                <div class="layui-form-item" style="margin-right: 20px;width: 85%">
+                    <label class="layui-form-label">直播统计 </label>
+                    <div class="layui-input-block statistics layui-tab-card" style="margin-right: 0">
+                        <div class="statistics-header">
+                            总观看次数 : <span class="total-number">0</span>次
+                        </div>
+                        <div class="statistics-main" id="main" style="min-width: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--修改正在直播日程弹窗模板-->
+<script type="text/html" id="openWindow">
+    <table class="layui-table" lay-even lay-skin="nob">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+        </colgroup>
+        <thead>
+        <tr>
+            <th style="text-align: center">演讲主题</th>
+            <th style="text-align: center">时间段</th>
+            <th style="text-align: center">演讲人</th>
+            <th style="text-align: center">头衔</th>
+            <td style="text-align: center">设置为正在直播</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#  layui.each(d, function(index, item){ }}
+            <tr style="text-align: center" class="hover-tr">
+                <td>{{item.liveTitle||''}}</td>
+                <td>
+                    <p>{{item.beginTime||''}}</p>至<p>{{item.endTime||''}}</p>
+                </td>
+                <td>{{item.speakerName||''}}</td>
+                <td>{{item.speakerTitle||''}}</td>
+                <td>
+                    {{# if(item.liveFlag == 1){ }}
+                    <i class="layui-icon setting now-setting"
+                       rec-id="{{item.recId||''}}"
+                       live-id="{{item.liveId||''}}"
+                       live-flag="{{item.liveFlag}}"
+                       onclick="pinned(this)"
+                       style="cursor: pointer;font-size: 18px;" title="设置为正在直播">&#xe618;
+                    </i>
+                    {{# }else{  }}
+                    <i class="layui-icon setting"
+                       rec-id="{{item.recId||''}}"
+                       live-id="{{item.liveId||''}}"
+                       live-flag="{{item.liveFlag}}"
+                       onclick="pinned(this)"
+                       style="display: none;cursor: pointer;font-size: 18px;" title="设置为正在直播">&#xe618;
+                    </i>
+                    {{# } }}
+                </td>
+            </tr>
+        {{# }); }}
+        </tbody>
+    </table>
+</script>
+

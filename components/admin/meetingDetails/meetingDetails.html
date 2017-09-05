@@ -1,0 +1,81 @@
+<!--页面容器-->
+<div class="meetingDetails-box animated fadeInRight"></div>
+
+<!--页面模板-->
+    <script type="text/html" id="details-temp">
+    <div class="info-header content-header" style="margin-bottom: 0">
+        <p class="content-p">{{d.type_name}}详情</p>
+    </div>
+    <div class="meetingDetails-top">
+        <div class="leftTitle">{{d.type_name}}页面效果</div>
+        <div class="html-small">
+            <div class="small-preview">
+                {{#if (d.imaradLiveInfoEntity.logoPath){}}
+                <div class="small-background">
+                    <img class="backshow2" id="background" src="{{d.SERVER_URL}}{{d.imaradLiveInfoEntity.bgPicPath}}" alt="">
+                </div>
+                {{# } }}
+                <div class="player-Preview" style="position: relative">
+                    <img src="./img/preview.png" alt="">
+                    {{#if (d.imaradLiveInfoEntity.logoPath){}}
+                    <img class="backshow1" src="{{d.SERVER_URL+d.imaradLiveInfoEntity.logoPath||'./img/adminlogo.png'}}" alt="" style="    position: absolute;width: 15%;height: 5%;top: 11%;z-index: 2;left: 54%;">
+                    {{#}else{}}
+                    <img class="backshow1" src="./img/adminlogo.png" alt="" style="    position: absolute;width: 15%;height: 5%;top: 11%;z-index: 2;left: 54%;">
+                    {{# } }}
+                    <img src="{{d.SERVER_URL}}{{d.imaradLiveInfoEntity.picPath||''}}" alt="" style="position: absolute;top: 9%;left: 0;width: 72%;height: 52%;">
+                </div>
+            </div>
+        </div>
+        <div class="descibe">
+            <p>{{d.type_name}}主题 : {{d.imaradLiveInfoEntity.liveTitle}} </p>
+            <p style="width: auto">开播时间 : {{d.imaradLiveInfoEntity.liveStartTime||''}} 至 {{d.imaradLiveInfoEntity.liveEndTime||''}}</p>
+            <p>权限管理 :
+                {{d.imaradLiveAuthorityEntity.authorityType==2?'密码':
+                (d.imaradLiveAuthorityEntity.authorityType==3?'F码':
+                (d.imaradLiveAuthorityEntity.authorityType==4?'白名单':'免费'))||'未设置'}}
+            </p>
+            <div class="descibe-p">
+                <span>{{d.type_name}}简介 : </span>
+                <span class="div">{{d.imaradLiveInfoEntity.liveDesc||''}}</span>
+            </div>
+        </div>
+    </div>
+    {{# if(d.type_number=='3'||d.type_name=='会议'){ }}
+    {{# if(d.liveDetailList.length>0){ }}
+    <div class="meetingDetails-middle">
+        <span class="leftTitle">会议日程安排</span>
+        <table class="layui-table" lay-even lay-skin="nob" style="margin-top: 20px">
+            <thead>
+            <tr>
+                <th style="text-align: center">
+                    演讲主题
+                </th>
+                <th style="text-align: center">时间段</th>
+                <th style="text-align: center">演讲人</th>
+                <th style="text-align: center">头衔</th>
+                <th style="text-align: center">简介</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#  layui.each(d.liveDetailList, function(index, item){ }}
+            <tr>
+                <td style="word-break: break-all;width: 18%">{{item.liveTitle}}</td>
+                <td style="word-break: break-all;width: 27%"><p>{{item.beginTime||''}}</p>至<p>{{item.endTime||''}}</p></td>
+                <td style="white-space: nowrap;width: 10%">{{item.speakerName}}</td>
+                <td style="white-space: nowrap;width: 10%">{{item.speakerTitle}}</td>
+                <td style="word-break: break-all;width: 35%">{{item.detailDesc}}</td>
+            </tr>
+            {{# }); }}
+            </tbody>
+        </table>
+    </div>
+    {{# } }}
+    {{# } }}
+
+    <!--判断不是历史直播或者历史会议可以提供修改-->
+    {{# if(!d.history&&d.type_number){ }}
+    <div class="meetingDetails-bottom">
+        <button class="layui-btn toEdit-btn" onclick="window.location.hash='#createMeeting?type=true&liveId={{d.imaradLiveInfoEntity.liveId}}'">修改</button>
+    </div>
+    {{# } }}
+    </script>

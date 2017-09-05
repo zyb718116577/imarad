@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>安锐达直播</title>
+    <link rel="stylesheet" href="../../../static/css/normalize.min.css">
+    <link rel="stylesheet" href="ardVideo.css"/>
+    <link rel="stylesheet" href="../../../lib/icon/iconfont.css"/>
+</head>
+<body>
+<!--遮罩层-->
+<div class="mask"></div>
+<!--登录窗口-->
+<div class="account-disgraceful"></div>
+<div class="sign-all-box">
+    <div class="sign">
+        <ul class="sign-hidden">
+            <li class="sign3">手机登录</li>
+            <li class="sign1 sign-active">账号登录</li>
+        </ul>
+        <div style="clear: both"></div>
+        <div action="" class="sign-info">
+            <div class="account">
+                <form action="#">
+                    <div class="sign-input">
+                        <input type="text" placeholder="账号" class="input-input" id="accountNumber">
+                        <img src="../../../img/error.png" class="error">
+                    </div>
+                    <div class="sign-input">
+                        <input type="password" placeholder="密码" class="input-input" id="accountPassword">
+                        <img src="../../../img/error.png" class="error">
+                    </div>
+                    <div class="sign-input sign-checkbox">
+                        <!--<input type="checkbox" id="checkbox">
+                        <label for="checkbox">自动登录</label>-->
+                        <a href="../forgotPassword/forgotPassword.html" style="text-decoration: none">忘记密码？</a>
+                    </div>
+                    <input type="button" value="登  录" class="submit-submit" style="margin-top: 8px" id="accountSubmit"
+                           onclick="return false">
+                    <input type="reset" value="重置" style="display: none" id="resetFirst">
+                </form>
+            </div>
+            <div class="tel">
+                <form action="#">
+                    <div class="sign-input">
+                        <input type="text" placeholder="请输入手机号" class="input-input" id="iphoneNumber">
+                        <img src="../../../img/error.png" class="error">
+                    </div>
+                    <div class="drag">
+                        <div class="disgraceful"></div>
+                        <div class="bg"></div>
+                        <p class="text">拖动滑块验证</p>
+                        <div class="btn"></div>
+                    </div>
+                    <div class="sign-input">
+                        <input type="password" placeholder="动态密码" class="input-input" id="iphonePassword">
+                        <img src="../../../img/error.png" class="error" style="right: 135px">
+                        <button class="img-verification" style="background: #b9d4e6;border: none;" disabled="disabled">
+                            获取验证码
+                        </button>
+                    </div>
+                    <input type="button" value="登  录" class="submit-submit" style="margin-top: 25px" id="iphoneSubmit"
+                           onclick="return false">
+                    <input type="reset" value="重置" style="display: none" id="resetTwo">
+                </form>
+            </div>
+        </div>
+        <div class="sign-hr"></div>
+        <div class="other-sign">
+            <div class="other-sign-left">第三方登录：</div>
+            <ul class="other-sign-center">
+                <li><img src="../../../img/login2.png"></li>
+                <li><img src="../../../img/login3.png"></li>
+                <li><img src="../../../img/login4.png"></li>
+            </ul>
+            <div class="other-sign-right"><a href="./../register/register.html">注册账号</a></div>
+        </div>
+    </div>
+</div>
+<!--公共头部-->
+<div class="header">
+    <div style="max-width: 1340px;min-width: 960px;height: 100%;margin: 0 auto;position: relative">
+        <div class="header-title">
+            <a href="../../../index.html#home"><img src="../../../img/logo.png"></a>
+        </div>
+        <div class="login-sign">
+            <a class="signTop" href="../register/register.html">注册</a>
+            <a class="login" href="../login/login.html">登录</a>
+        </div>
+        <div class="header-info">
+            <div class="header-info-center">
+                <img src="../../../img/ardLive1.png" id="userImg" style="width: 100%;height: 100%;border-radius: 100%">
+            </div>
+            <div class="header-info-right">
+                <span id="userName"></span>
+                <!--<div class="triangle"></div>-->
+            </div>
+            <div class="logout-and-handover-box">
+                <div class="triangle-up" style="top: 56px;left: -41px"></div>
+                <div class="logout-and-handover">
+                    <a href="../../../admin.html" style="border-top-left-radius: 3px;border-top-right-radius: 3px"><i
+                            class="icon iconfont icon-shezhi" style="font-size: 16px;padding-right: 10px"></i>个人设置</a>
+                    <a id="logout"><i class="icon iconfont icon-tuichudenglu"
+                                      style="font-size: 16px;padding-right: 10px"></i>注销</a>
+                    <a href="../login/login.html"><i class="icon iconfont icon-qiehuanyonghu"
+                                                     style="font-size: 16px;padding-right: 10px"></i>切换用户</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--背景图-->
+<!--<div class="ardLive-background"></div>-->
+<div style="height: 20px;width: 100%;background: #f2f2f2;min-width: 960px;"></div>
+<!--内容部分-->
+<div class="main">
+    <div class="ardLive-box">
+        <div style="background: white;padding: 0 20px 17px 20px">
+            <div class="ardLive-p1">
+                <div id="videInfo1"></div>
+                <script type="text/html" id="videInfoTpl1">
+                    <div class="ardLive-p1-left">
+                        <span>{{ d.viodeInfo.videoTitle }}</span>
+                        <a href="">
+                            {{# if(d.viodeInfo.videoType === 2){ }}
+                            回放
+                            {{# }else{ }}
+                            预告
+                            {{# } }}
+                        </a>
+                    </div>
+                </script>
+                <div class="ardLive-p1-right">
+                <span id="videoPlayNum">
+                    <script type="text/html" id="videoPlayNumTpl">
+                        {{ d.data }}人浏览
+                    </script>
+                </span>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+
+            <div class="ardLive-p2">
+                <div class="ardLive-p2-left">
+                    <div id="videInfo2" style="float: left"></div>
+                    <script type="text/html" id="videInfoTpl2">
+                        <span style="float: left"><a href="../../../index.html#home">首页</a> > <a
+                                href="../../../index.html#onlineClassroom">在线课堂</a> > <span
+                                class="ardLive-p2-left-text">
+                            {{# if(d.viodeInfo.videoType ==2 ){ }}
+                                回放
+                            {{# }else{ }}
+                                预告
+                            {{# } }}
+                    </span></span>
+                        <span style="float: left">播主 : <span class="ardLive-p2-left-text" style="color: #0773b8"
+                                                             id="ardLiveName">{{ d.userName }}</span></span>
+                        <span style="float: left">录播时间 : <span class="ardLive-p2-left-text">{{ d.viodeInfo.gmtCreate.slice(0,10) }}</span></span>
+                    </script>
+                    <span style="color: #0773b8;cursor: pointer" id="feedBack">问题反馈</span>
+
+                </div>
+                <div class="ardLive-p2-right">
+                    <div class="ardLive-p2-tel">
+                        <div class="ardLive-p2-right-img1"></div>
+                        <span>手机扫码观看</span>
+                        <div class="qrcode">
+                            <img src="" style="width: 100%;height: 100%">
+                        </div>
+                    </div>
+                    <!--<div class="ardLive-p2-share">
+                        <div class="ardLive-p2-right-img2"></div>
+                        <span>分享直播</span>
+                    </div>-->
+                    <div class="ardLive-p2-info">
+                        <button class="ardLive-p2-info-left" id="anchor"></button>
+                        <div id="attentionNum" class="ardLive-p2-info-right"></div>
+                        <script type="text/html" id="attentionNumTpl">
+                            {{ d.data }}
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+
+
+        <div class="ardLive-video-box">
+            <div class="ardLive-video">
+                <div class="ardLive-video-problem">
+                    <div class="ardLive-video-problem-top">
+                        <div class="ardLive-video-problem-top-left">问题反馈</div>
+                        <div class="ardLive-video-problem-top-right" id="close"></div>
+                    </div>
+                    <div id="liveCommit">
+                        <script type="text/html" id="liveCommitTpl">
+                            <div>
+                                <span class="ardLive-video-problem-input-left feedbackInfo defaultProblem">{{ d[0] }}</span>
+                                <span class="ardLive-video-problem-input-right feedbackInfo defaultProblem">{{ d[1] }}</span>
+                            </div>
+                            <div>
+                                <span class="ardLive-video-problem-input-left feedbackInfo defaultProblem">{{ d[2] }}</span>
+                                <span class="ardLive-video-problem-input-right feedbackInfo defaultProblem">{{ d[3] }}</span>
+                            </div>
+                        </script>
+                    </div>
+                    <textarea class="ardLive-video-problem-textarea"
+                              id="feedbackInfoTextarea" maxlength="200"></textarea>
+                    <button class="ardLive-video-problem-sure" id="problemFeedback">确 定</button>
+                </div>
+                <!--播放器-->
+                <div id='playwrap'>
+                    <div id='player'></div>
+                </div>
+            </div>
+            <div class="ardLive-comment" style="display: none">
+                <!--<div class="ardLive-comment-top">聊天室</div>-->
+                <!--聊天室-->
+                <div id='chatwrap' style="height: 100%">
+                    <div id='chat'></div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="small-window"></div>
+    <div class="expert-live">
+        <div id="videInfo3"></div>
+        <script type="text/html" id="videInfoTpl3">
+            <div class="conference-details-box">
+                <div class="conference-details">内容简介</div>
+                <div class="conference-details-describe">{{ d.viodeInfo.videoDesc}}</div>
+            </div>
+        </script>
+    </div>
+
+
+    <!--底部-->
+    <div class="so-specialist-footer">
+        <ul class="so-specialist-footer1">
+            <li>关于我们</li>
+            <li>|</li>
+            <li>合作伙伴</li>
+            <li>|</li>
+            <li>加入安锐达</li>
+            <li>|</li>
+            <li>平台介绍</li>
+            <li>|</li>
+            <li>服务条款</li>
+            <li>|</li>
+            <li>常见问题</li>
+        </ul>
+        <div style="clear: both"></div>
+        <div class="so-specialist-footer2">版权所有©2015 重庆安碧捷科技股份有限公司 渝ICP备12007374号|渝公网备：50010902000052</div>
+    </div>
+</div>
+</div>
+<script src="../../../static/js/js/chatease.js"></script>
+<script src="../../../static/js/js/playease.js"></script>
+<script src="../../../lib/jquery.js"></script>
+<script src="../../../lib/jquery.cookie.js"></script>
+<script src="../../../static/layui/layui.js"></script>
+<script src="../../../static/js/util.other.js"></script>
+<script src="../../../static/js/player.js"></script>
+<script src="ardVideo.js"></script>
+<script src="../login/otherLogin.js"></script>
+<script>
+
+</script>
+</body>
+</html>

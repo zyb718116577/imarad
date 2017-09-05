@@ -1,0 +1,183 @@
+
+<div class="safety-box animated fadeInRight">
+    <script id="safetyBox" type="text/html">
+    <div class="info-header content-header">
+        <p class="content-p">账户安全<span style="color: #000"> >>{{ d.names[d.type] }}</span></p>
+    </div>
+    <div class="safety-main">
+        <div class="change-main">
+            <!--绑定邮箱-->
+            {{#  if(d.type == 'email'){ }}
+            <div style="">
+                <div class="step-body myStep" id="myStep1">
+                    <div class="step-header" style="width:80%">
+                        <ul>
+                            <li><p>绑定邮箱</p></li>
+                            <li><p>绑定成功</p></li>
+                        </ul>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-list">
+                            <div class="layui-form" style="width: 80%">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">邮箱 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="email" class="layui-input email-input" lay-verify="required|email" type="text" placeholder="请输入邮箱地址" autocomplete="off" >
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn layui-btn-normal nextBtn" lay-submit="" lay-filter="*">下一步</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-list">
+                            <div class="step-success  rubberBand animated">
+                                <i class="layui-icon" style="font-size: 50px;color: #02a0d8;">&#xe616;</i>
+                                <p style="text-align: center">操作成功</p>
+                            </div>
+                            <button class="layui-btn layui-btn-normal return-button">返回</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {{#  } }}
+            <!--绑定手机-->
+            {{#  if(d.type == 'phone'){ }}
+            <div style="">
+                <div class="step-body myStep" id="myStep2">
+                    <div class="step-header" style="width:80%">
+                        <ul>
+                            <li><p>验证手机</p></li>
+                            <li><p>更换手机</p></li>
+                            <li><p>绑定成功</p></li>
+                        </ul>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-list">
+                            <div class="layui-form" style="width: 80%">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">原手机号 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="phone" type="text" placeholder="请输入原手机号" lay-verify="required|myPhone" autocomplete="off" class="layui-input email-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">验证码 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="code" type="text" placeholder="请输入验证码" lay-verify="required|code" autocomplete="off" class="layui-input code-input">
+                                        <button disabled="disabled" class="layui-btn layui-btn-primary layui-btn-disabled code-btn" style="float: right">获取验证码</button>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button step="1" class="layui-btn layui-btn-normal nextBtn" lay-submit lay-filter="*">下一步</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-list">
+                            <div class="layui-form" style="width: 80%">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">新手机号 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="phone" type="text" placeholder="请输入新手机号" lay-verify="required|myPhone" autocomplete="off" class="layui-input email-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">验证码 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="code" type="text" placeholder="请输入验证码" lay-verify="required|code" autocomplete="off" class="layui-input code-input">
+                                        <button disabled="disabled" class="layui-btn layui-btn-disabled layui-btn-primary code-btn" style="float: right">获取验证码</button>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button step="2" class="layui-btn layui-btn-normal nextBtn" lay-submit lay-filter="*">下一步</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-list">
+                            <div class="step-success  rubberBand animated">
+                                <i class="layui-icon" style="font-size: 50px;color: #02a0d8;">&#xe616;</i>
+                                <p style="text-align: center">操作成功</p>
+                            </div>
+                            <button class="layui-btn layui-btn-normal return-button">返回</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {{#  } }}
+            <!--修改密码-->
+            {{#  if(d.type == 'pwd'){ }}
+            <div style="">
+                <div class="step-body myStep" id="myStep">
+                    <div class="step-header" style="width:80%">
+                        <ul>
+                            <li><p>验证</p></li>
+                            <li><p>修改成功</p></li>
+                        </ul>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-list">
+                            <div class="layui-form" style="width: 80%">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">手机号 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="phone" type="text" placeholder="请输入手机号" lay-verify="required|myPhone" autocomplete="off" class="layui-input email-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">验证码 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="code" type="text" placeholder="请输入验证码" lay-verify="required|code" autocomplete="off" class="layui-input code-input">
+                                        <button disabled="disabled" class="layui-btn layui-btn-disabled layui-btn-primary code-btn" style="float: right">获取验证码</button>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">旧密码 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="oldPassword" type="password" placeholder="请输入原密码" lay-verify="required|pass" autocomplete="off" class="layui-input email-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">新密码 : </label>
+                                    <div class="layui-input-block">
+                                        <input name="password" type="password" placeholder="请输入新密码" lay-verify="required|pass" autocomplete="off" class="layui-input email-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn layui-btn-normal nextBtn" lay-submit lay-filter="*" >下一步</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-list">
+                            <div class="step-success  rubberBand animated">
+                                <i class="layui-icon" style="font-size: 50px;color: #02a0d8;">&#xe616;</i>
+                                <p style="text-align: center">操作成功</p>
+                            </div>
+                            <button class="layui-btn layui-btn-normal return-button">返回</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            {{#  } }}
+        </div>
+
+        </div>
+
+<!--
+        <button id="preBtn">上一步</button>
+        <button id="goBtn">跳转的指定的步骤</button>-->
+    </script>
+</div>
+
+
+
